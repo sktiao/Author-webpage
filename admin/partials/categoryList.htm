@@ -1,0 +1,37 @@
+<table ng-init="getCategoryList()">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Name</th>
+		</tr>
+		<tr>
+			<td>Filter: <input type="text" ng-model="categoryFilterId" size="6" /></td>
+			<td><input type="text" ng-model="categoryFilterName" /></td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="category in categoryList" ng-show="categoryListFilter(category)" ng-style="{'background-color': (editCategoryIndex == $index) && 'yellow'}">
+			<td>
+				<span ng-show="editCategoryIndex != $index">{{category.id}}</span>
+				<input type="text" ng-model="category.tempId" ng-show="editCategoryIndex == $index" size="6">
+			</td>
+			<td>
+				<span ng-show="editCategoryIndex != $index">{{category.name}}</span>
+				<input type="text" ng-model="category.tempName" ng-show="editCategoryIndex == $index">
+			</td>
+			<td>
+				<input type="button" value="Edit" ng-click="editCategory($index,category)" ng-show="editCategoryIndex != $index" />
+				<input type="button" value="Save" ng-click="updateCategory(category.id,category.tempId,category.tempName)" ng-show="editCategoryIndex == $index" />
+				<input type="button" value="Cancel" ng-click="cancelEditCategory()" ng-show="editCategoryIndex == $index" />
+				<input type="button" value="Delete" ng-click="deleteCategory(category.id,category.name)" ng-show="editCategoryIndex != $index" />
+			</td>
+		</tr>
+	</tbody>
+	<tfoot>
+		<tr>
+			<td>Add new category:</td>
+			<td><input type="text" ng-model="addCategoryName" /></td>
+			<td><input type="button" value="Add" ng-click="addCategory(addCategoryName)" /></td>
+		</tr>
+	</tfoot>
+</table>
