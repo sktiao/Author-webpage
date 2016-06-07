@@ -1,3 +1,11 @@
+<div class="content" ng-init="getCategoryList()">
+	<div class="categoryList-category" ng-repeat="category in categoryList">
+		<div class="categoryList-category-image-container"><img class="categoryList-category-image" src="img/categoryImage-{{category.image}}.jpg" /></div>
+		<div class="categoryList-category-text-container"><div class="categoryList-category-text">{{category.name}}</div></div>
+	</div>
+</div>
+
+<!--
 <table ng-init="getCategoryList()">
 	<thead>
 		<tr>
@@ -22,3 +30,4 @@
 		</tr>
 	</tbody>
 </table>
+-->
