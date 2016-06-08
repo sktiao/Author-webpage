@@ -1,33 +1,12 @@
 <div class="content" ng-init="getCategoryList()">
-	<div class="categoryList-category" ng-repeat="category in categoryList">
-		<div class="categoryList-category-image-container"><img class="categoryList-category-image" src="img/categoryImage-{{category.image}}.jpg" /></div>
-		<div class="categoryList-category-text-container"><div class="categoryList-category-text">{{category.name}}</div></div>
+	<div class="categoryList-titleCard">
+		<div class="categoryList-titleCard-image-container"><img class="categoryList-titleCard-image" src="img/categoryList/categoryTitleImage.jpg" /></div>
+		<div class="categoryList-titleCard-text-container"><div class="categoryList-titleCard-text">Products</div></div>
+	</div>
+	<div>
+		<div class="categoryList-category" ng-repeat="category in categoryList">
+			<div class="categoryList-category-image-container"><img class="categoryList-category-image" src="img/categoryList/{{category.image}}.jpg" /></div>
+			<div class="categoryList-category-text-container"><div class="categoryList-category-text">{{category.name}}</div></div>
+		</div>
 	</div>
 </div>
-
-<!--
-<table ng-init="getCategoryList()">
-	<thead>
-		<tr>
-			<th>ID</th>
-			<th>Name</th>
-		</tr>
-		<tr>
-			<td>Filter: <input type="text" ng-model="categoryFilterId" size="6" /></td>
-			<td><input type="text" ng-model="categoryFilterName" /></td>
-		</tr>
-	</thead>
-	<tbody>
-		<tr ng-repeat="category in categoryList" ng-show="categoryListFilter(category)" ng-style="{'background-color': (editCategoryIndex == $index) && 'yellow'}">
-			<td>
-				<span ng-show="editCategoryIndex != $index">{{category.id}}</span>
-				<input type="text" ng-model="category.tempId" ng-show="editCategoryIndex == $index" size="6">
-			</td>
-			<td>
-				<span ng-show="editCategoryIndex != $index">{{category.name}}</span>
-				<input type="text" ng-model="category.tempName" ng-show="editCategoryIndex == $index">
-			</td>
-		</tr>
-	</tbody>
-</table>
--->

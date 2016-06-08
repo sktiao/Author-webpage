@@ -47,7 +47,7 @@
 				<input type="text" ng-model="product.tempId" ng-show="editProductIndex == $index" size="6">
 			</td>
 			<td>
-				<span ng-show="editProductIndex != $index">{{categoryDictionary[product.category]}}</span>
+				<span ng-show="editProductIndex != $index">{{categoryDictionary[product.category]}} (ID {{product.category}})</span>
 				<select ng-model="product.tempCategory" ng-show="editProductIndex == $index">
 					<option ng-repeat="category in categoryList" value="{{category.id}}">{{category.name}}</option>
 				</select>

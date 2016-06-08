@@ -63,19 +63,38 @@ angular
 	};
 	
 	// add category
-	$scope.addCategory = function(name) {
-		if (name) {
+	$scope.addCategory = function(name,image) {
+		var formData = new FormData(document.getElementById('addCategoryImage-form'));
+		if (name && document.getElementById('addCategoryImage-input').files[0]) {
 			$http
 			.post('services/', {request:'addCategory', name:name})
 			.success(function(result) {
+				console.log(result);
 				if (result.reply == 'success') {
 					$scope.getCategoryList();
+				}
+			});
+			var fd = new FormData(document.getElementById('addCategoryImage-form'));
+			$.ajax({
+				url: 'services/addCategoryImage-upload.php',
+				method: 'POST',
+				data: fd,
+				contentType: false,
+				processData: false,
+				success: function(res) {
+					console.log(res);
 				}
 			});
 		} else {
 			alert('You must fill in every field when adding new categories.');
 		}
 	};
+	
+	$('#addCategoryImage-input').on('change', function(e) {
+		console.log(1);
+		var src = window.URL.createObjectURL(this.files[0]);
+		$('#addCategoryImage-preview').attr('src',src);
+	});
 	
 	// edit category
 	$scope.editCategory = function(index,category) {
@@ -85,13 +104,24 @@ angular
 	};
 	
 	$scope.updateCategory = function(id,newId,newName) {
-		if (id && newId && newName) {
+		if (id && newId && newName && document.getElementById('updateCategoryImage-input').files[0]) {
 			$http
 			.post('services/', {request:'updateCategory', id:id, newId:newId, newName:newName})
 			.success(function(result) {
 				if (result.reply == 'success') {
 					$scope.getCategoryList();
 					$scope.cancelEditCategory();
+				}
+			});
+			var fd = new FormData(document.getElementById('editCategoryImage-form'));
+			$.ajax({
+				url: 'services/updateCategoryImage-upload.php',
+				method: 'POST',
+				data: fd,
+				contentType: false,
+				processData: false,
+				success: function(res) {
+					console.log(res);
 				}
 			});
 		} else {
@@ -101,6 +131,14 @@ angular
 	
 	$scope.cancelEditCategory = function() {
 		$scope.editCategoryIndex = null;
+	};
+	
+	$scope.editCategoryImageBind = function() {
+		$(this).find('#editCategoryImage-input').on('change', function(e) {
+			console.log(1);
+			var src = window.URL.createObjectURL(this.files[0]);
+			$('#editCategoryImage-preview').attr('src',src);
+		});
 	};
 	
 	// delete category

@@ -11,7 +11,8 @@
 	} elseif ($data->request == "addCategory") {
 		$mysqli = new mysqli($db_host, $db_user, $db_pass, $db_name);
 		$name = $mysqli->real_escape_string($data->name);
-		$result = $mysqli->query("INSERT INTO categories (name) VALUES ('".$name."')");
+		$image = base64_encode($name);
+		$mysqli->query("INSERT INTO categories (name,image) VALUES ('".$name."','".$image."')");
 		$mysqli->close();
 		exit(json_encode(array("reply"=>"success")));
 	} elseif ($data->request == "updateCategory") {

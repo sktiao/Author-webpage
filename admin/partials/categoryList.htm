@@ -3,21 +3,29 @@
 		<tr>
 			<th>ID</th>
 			<th>Name</th>
+			<th>Image</th>
 		</tr>
 		<tr>
 			<td>Filter: <input type="text" ng-model="categoryFilterId" size="6" /></td>
 			<td><input type="text" ng-model="categoryFilterName" /></td>
+			<td></td>
 		</tr>
 	</thead>
 	<tbody>
-		<tr ng-repeat="category in categoryList" ng-show="categoryListFilter(category)" ng-style="{'background-color': (editCategoryIndex == $index) && 'yellow'}">
+		<tr ng-repeat="category in categoryList" ng-show="categoryListFilter(category)" ng-style="{'background-color': (editCategoryIndex == $index) && 'yellow'}" ng-init="editCategoryImageBind()">
 			<td>
 				<span ng-show="editCategoryIndex != $index">{{category.id}}</span>
 				<input type="text" ng-model="category.tempId" ng-show="editCategoryIndex == $index" size="6">
 			</td>
 			<td>
+				<form id="editCategoryImage-form"></form>
 				<span ng-show="editCategoryIndex != $index">{{category.name}}</span>
-				<input type="text" ng-model="category.tempName" ng-show="editCategoryIndex == $index">
+				<input type="text" form="editCategoryImage-form" ng-model="category.tempName" ng-show="editCategoryIndex == $index">
+			</td>
+			<td>
+				<img class="categoryList-categoryImage" src="../img/categoryList/{{category.image}}.jpg" ng-show="editCategoryIndex != $index" />
+				<div><img id="editCategoryImage-preview" src="" ng-show="editCategoryIndex == $index" /></div>
+				<input id="editCategoryImage-input" type="file" name="editCategoryImage-image" accept="image/jpg" form="editCategoryImage-form" ng-show="editCategoryIndex == $index" />
 			</td>
 			<td>
 				<input type="button" value="Edit" ng-click="editCategory($index,category)" ng-show="editCategoryIndex != $index" />
@@ -30,8 +38,9 @@
 	<tfoot>
 		<tr>
 			<td>Add new category:</td>
-			<td><input type="text" ng-model="addCategoryName" /></td>
-			<td><input type="button" value="Add" ng-click="addCategory(addCategoryName)" /></td>
+			<td><form id="addCategoryImage-form"></form><input type="text" name="addCategoryImage-name" form="addCategoryImage-form" ng-model="addCategoryName" /></td>
+			<td><div><img id="addCategoryImage-preview" src="" /></div><input id="addCategoryImage-input" type="file" name="addCategoryImage-image" accept="image/jpg" form="addCategoryImage-form" /></td>
+			<td><input type="button" value="Add" ng-click="addCategory(addCategoryName,addcategoryImage)" /></td>
 		</tr>
 	</tfoot>
 </table>

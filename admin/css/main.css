@@ -23,3 +23,8 @@ thead > tr {
 tfoot > tr {
 	background-color: lightgreen;
 }
+
+.categoryList-categoryImage, #addCategoryImage-preview, #editCategoryImage-preview {
+	height: 50px;
+	width: 200px;
+}
