@@ -1,100 +1,103 @@
-<table ng-init="getProductList();getCategoryList()">
+<table>
 	<thead>
 		<tr>
-			<th>ID</th>
-			<th>Category</th>
-			<th>Name</th>
-			<th>Price</th>
-			<th>Brand</th>
-			<th>Description</th>
-			<th>Quantity</th>
+			<th style="width:120px">ID</th>
+			<th style="width:300px">Name</th>
+			<th style="width:120px">Price</th>
+			<th style="width:230px">Keywords</th>
+			<th style="width:400px">Description</th>
+			<th>Image</th>
+			<th style="width:120px">Quantity</th>
+			<th style="width:80px"></th>
 		</tr>
 		<tr>
-			<td>Filter: <input type="text" ng-model="productFilterId" size="6" /></td>
+			<td>Filter: <input type="text" ng-model="productFilter.id" size="6" /></td>
 			<td>
-				<select ng-model="productFilterCategory">
-					<option value=""> - Show All -</option>
-					<option ng-repeat="category in categoryList" value="{{category.id}}">{{category.name}}</option>
-				</select>
-			</td>
-			<td><input type="text" ng-model="productFilterName" /></td>
-			<td>
-				<select ng-model="productFilterPriceOperator">
+				<select ng-model="productFilter.nameOperator">
 					<option value=""></option>
-					<option value="0"><</option>
-					<option value="1">=</option>
-					<option value="2">></option>
+					<option value="any">ANY</option>
+					<option value="all">ALL</option>
 				</select>
-				<input type="text" ng-model="productFilterPriceValue" size="6" />
+				<input type="text" ng-model="productFilter.nameValue" />
 			</td>
-			<td><input type="text" ng-model="productFilterBrand" /></td>
-			<td><input type="text" ng-model="productFilterDescription" /></td>
 			<td>
-				<select ng-model="productFilterQuantityOperator">
+				<select ng-model="productFilter.priceOperator">
 					<option value=""></option>
-					<option value="0"><</option>
-					<option value="1">=</option>
-					<option value="2">></option>
+					<option value="less"><</option>
+					<option value="lessEqual"><=</option>
+					<option value="equal">=</option>
+					<option value="greaterEqual">>=</option>
+					<option value="greater">></option>
 				</select>
-				<input type="text" ng-model="productFilterQuantityValue" size="6" />
+				<input type="text" size="6" ng-model="productFilter.priceValue" />
 			</td>
+			<td>
+				<select ng-model="productFilter.keywordsOperator">
+					<option value=""></option>
+					<option value="any">ANY</option>
+					<option value="all">ALL</option>
+				</select>
+				<input type="text" ng-model="productFilter.keywordsValue" />
+			</td>
+			<td>
+				<select ng-model="productFilter.descriptionOperator">
+					<option value=""></option>
+					<option value="any">ANY</option>
+					<option value="all">ALL</option>
+				</select>
+				<input type="text" ng-model="productFilter.descriptionValue" />
+			</td>
+			<td></td>
+			<td>
+				<select ng-model="productFilter.quantityOperator">
+					<option value=""></option>
+					<option value="less"><</option>
+					<option value="lessEqual"><=</option>
+					<option value="equal">=</option>
+					<option value="greaterEqual">>=</option>
+					<option value="greater">></option>
+				</select>
+				<input type="text" size="6" ng-model="productFilter.quantityValue" />
+			</td>
+			<td><input type="button" value="Clear" ng-click="filterProductsClear()" /></td>
 		</tr>
 	</thead>
 	<tbody>
-		<tr ng-repeat="product in productList" ng-show="productListFilter(product)" ng-style="{'background-color': (editProductIndex == $index) && 'yellow'}">
-			<td>
-				<span ng-show="editProductIndex != $index">{{product.id}}</span>
-				<input type="text" ng-model="product.tempId" ng-show="editProductIndex == $index" size="6">
-			</td>
-			<td>
-				<span ng-show="editProductIndex != $index">{{categoryDictionary[product.category]}} (ID {{product.category}})</span>
-				<select ng-model="product.tempCategory" ng-show="editProductIndex == $index">
-					<option ng-repeat="category in categoryList" value="{{category.id}}">{{category.name}}</option>
-				</select>
-			</td>
-			<td>
-				<span ng-show="editProductIndex != $index">{{product.name}}</span>
-				<input type="text" ng-model="product.tempName" ng-show="editProductIndex == $index">
-			</td>
-			<td>
-				<span ng-show="editProductIndex != $index">{{product.price}}</span>
-				<input type="text" ng-model="product.tempPrice" ng-show="editProductIndex == $index" size="6">
-			</td>
-			<td>
-				<span ng-show="editProductIndex != $index">{{product.brand}}</span>
-				<input type="text" ng-model="product.tempBrand" ng-show="editProductIndex == $index">
-			</td>
-			<td>
-				<span ng-show="editProductIndex != $index">{{product.description}}</span>
-				<input type="text" ng-model="product.tempDescription" ng-show="editProductIndex == $index">
-			</td>
-			<td ng-style="{'background-color': (product.quantity==0) && 'pink'}">
-				<span ng-show="editProductIndex != $index">{{product.quantity}}</span>
-				<input type="text" ng-model="product.tempQuantity" ng-show="editProductIndex == $index" size="6">
-			</td>
-			<td>
-				<input type="button" value="Edit" ng-click="editProduct($index,product)" ng-show="editProductIndex != $index" />
-				<input type="button" value="Save" ng-click="updateProduct(product.id,product.tempId,product.tempCategory,product.tempName,product.tempPrice,product.tempBrand,product.tempDescription,product.tempQuantity)" ng-show="editProductIndex == $index" />
-				<input type="button" value="Cancel" ng-click="cancelEditProduct()" ng-show="editProductIndex == $index" />
-				<input type="button" value="Delete" ng-click="deleteProduct(product.id,product.name)" ng-show="editProductIndex != $index" />
-			</td>
+		<tr ng-repeat="product in productList" ng-show="filterProductsShow($index)">
+			<td>{{product.id}}</td>
+			<td ng-style="{'background-color': product.name=='' && 'pink'}">{{product.name}}</td>
+			<td ng-style="{'background-color': (product.price=='' || product.price==0) && 'pink'}">${{product.price}}</td>
+			<td ng-style="{'background-color': product.keywords=='' && 'pink'}">{{product.keywords}}</td>
+			<td ng-style="{'background-color': product.description=='' && 'pink'}">{{product.description}}</td>
+			<td><img src="" /></td>
+			<td ng-style="{'background-color': (product.quantity=='' || product.quantity==0) && 'pink'}">{{product.quantity}}</td>
+			<td><input type="button" value="Delete" ng-click="deleteProduct($index)" /></td>
 		</tr>
 	</tbody>
 	<tfoot>
 		<tr>
-			<td>Add new product:</td>
-			<td>
-				<select ng-model="addProductCategory">
-					<option value=""> - Pick One -</option>
-					<option ng-repeat="category in categoryList" value="{{category.id}}">{{category.name}}</option>
-				</select>
-			</td>
-			<td><input type="text" ng-model="addProductName" /></td>
-			<td><input type="text" ng-model="addProductPrice" size="6" /></td>
-			<td><input type="text" ng-model="addProductBrand" /></td>
-			<td><input type="text" ng-model="addProductDescription" /></td>
-			<td><input type="text" ng-model="addProductQuantity" size="6" /></td>
-			<td><input type="button" value="Add" ng-click="addProduct(addProductCategory,addProductName,addProductPrice,addProductBrand,addProductDescription,addProductQuantity)" /></td>
+			<th>ID</td>
+			<th>Name</td>
+			<th>Price</td>
+			<th>Keywords</td>
+			<th>Description</td>
+			<th>Image</td>
+			<th>Quantity</td>
+		</tr>
+		<tr ng-repeat="product in addProductsList">
+			<td>New Product:</td>
+			<td><input type="text" ng-model="product.name" /></td>
+			<td><input type="text" ng-model="product.price" size="6" /></td>
+			<td><input type="text" ng-model="product.keywords" /></td>
+			<td><input type="text" ng-model="product.description" /></td>
+			<td><img src="" /></td>
+			<td><input type="text" ng-model="product.quantity" size="6" /></td>
+			<td><input type="button" value="Remove" ng-click="addProductsRemove($index)" /></td>
+		</tr>
+		<tr>
+			<td><input type="button" value="Add New Product" ng-click="addProductsAdd()" /></td>
+			<td colspan="6"></td>
+			<td ng-show="addProductsList.length > 0"><input type="button" value="Submit" ng-click="addProductsSubmit()" /></td>
 		</tr>
 	</tfoot>
 </table>
