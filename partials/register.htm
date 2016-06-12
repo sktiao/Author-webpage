@@ -1,0 +1,13 @@
+<div class="content">
+	<div ng-show="!registered">
+		<div><h1>Register Account</h1></div>
+		<div>Username: <input type="text" ng-model="username" /></div>
+		<div>Password: <input type="password" ng-model="password" /></div>
+		<div>Confirm Password: <input type="password" ng-model="passwordConfirm" /></div>
+		<div><input type="button" value="Register" ng-click="submit()" /></div>
+	</div>
+	<div ng-show="registered">
+		<div>Registration successful!</div>
+		<div><a href="/">Back to Main</a></div>
+	</div>
+</div>

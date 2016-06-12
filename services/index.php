@@ -2,10 +2,16 @@
 	include "config.php";
 	include "functions.php";
 	
-	$post = file_get_contents("php://input");
-	$data = json_decode($post);
+	$post = json_decode(file_get_contents("php://input"));
 	
-	include "appServices.php";
-	include "categoryListServices.php";
-	include "productListServices.php";
+	if (property_exists($post,"request")) {
+		include "appServices.php";
+		include "registerServices.php";
+		include "loginServices.php";
+		include "stocksServices.php";
+		
+		refreshToken();
+	} else {
+		echo("no request");
+	}
 ?>

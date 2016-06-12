@@ -1,24 +1,28 @@
-/* 
-background grey: #f8f8f8;
-border grey: #ddd;
- */
-
 body {
-	background-color: #f8f8f8;
-	font-family: 'Century Gothic', Arial;
+	background-color: #eee;
+	font-family: 'Century Gothic', 'Arial', sans-serif;
 	margin: 0;
+}
+
+h1 {
+	font-size: 2em;
 }
 
 .header {
 	background-color: white;
+	border-bottom: 1px solid #ddd;
+	height: 3em;
 }
 
-.footer {
-	background-color: white;
-	border: 1px solid #ddd;
-	height: 300px;
-	margin: 0 auto;
-	width: 998px;
+.header-main {
+	padding: 1em;
+	float: left;
+}
+
+.header-userInfo {
+	padding: 1em;
+	float: right;
+	text-align: right;
 }
 
 .content {
@@ -26,70 +30,162 @@ body {
 	width: 1000px;
 }
 
-/* categoryList */
+/* stocks */
+.stocksTable thead tr {
+	background-color: lightblue;
+}
 
-.categoryList-titleCard {
-	height: 250px;
-	margin-bottom: 20px;
+.stocksTable > tbody > tr:nth-child(2n) {
+	background-color: white;
+}
+.stocksTable > tbody > tr:hover {
+	background-color: lightyellow;
+	cursor: pointer;
+}
+
+.stocksTable > tfoot > tr {
+	background-color: lightblue;
+}
+
+.stocksTable th {
+	font-weight: bold;
+}
+
+.stocksTable th, .stocksTable td {
+	border: 1px solid black;
+	padding: 0.5em;
+}
+
+.graphContainer {
+	border: 1px solid black;
+	padding: 20px 0 40px 90px;
+}
+
+.graph {
 	position: relative;
+	width: 850px;
 }
 
-.categoryList-titleCard-image-container {
-	
-}
-
-.categoryList-titleCard-image {
-	height: 250px;
+.xAxis {
+	height: 1em;
+	left: 0;
+	position: absolute;
+	top: 100%;
 	width: 100%;
 }
 
-.categoryList-titleCard-text-container {
-	background-color: rgba(0,0,0,0.3);
-	height: 100%;
+.xAxis-left {
 	left: 0;
 	position: absolute;
 	text-align: center;
-	top: 0;
-	width: 100%;
+	top: 15px;
+	width: 200px;
 }
 
-.categoryList-titleCard-text {
-	border: 1px solid white;
-	color: white;
-	display: inline-block;
-	font-size: 30px;
-	padding: 20px;
-	margin: 89px auto;
-}
-
-.categoryList-category {
-	background-color: white;
-	border: 1px solid #ddd;
-	display: inline-block;
-	margin-bottom: 20px;
+.xAxis-left > div {
 	position: relative;
-	width: 488px
+	right: 50%;
 }
 
-.categoryList-category:nth-child(2n+1) {
-	margin-right: 20px;
+.xAxis-right {
+	position: absolute;
+	right: 0;
+	text-align: center;
+	top: 15px;
+	width: 200px;
 }
 
-.categoryList-category-image-container {
-	
+.xAxis-right > div {
+	left: 50%;
+	position: relative;
 }
 
-.categoryList-category-image {
-	height: 160px;
+.xAxis-marker {
+	border-left: 1px solid black;
+	height: 10px;
+	float: left;
+	width: 848px;
+}
+
+.xAxis-marker:last-child {
+	border-right: 1px solid black;
+}
+
+.yAxis {
+	height: 201px;
+	position: absolute;
+	top: 0;
+	right: 100%;
+	width: 80px;
+}
+
+.yAxis-top {
+	position: absolute;
+	right: 12px;
+	top: 0;
+}
+
+.yAxis-top > div {
+	bottom: 0.5em;
+	position: relative;
+}
+
+.yAxis-bottom {
+	bottom: 0;
+	position: absolute;
+	right: 12px;
+}
+
+.yAxis-bottom > div {
+	position: relative;
+	top: 0.5em;
+}
+
+.yAxis-marker {
+	border-top: 1px solid black;
+	clear: both;
+	float: right;
+	height: 49px;
+	width: 10px;
+}
+
+.yAxis-marker:last-child {
+	border-bottom: 1px solid black;
+}
+
+.graphBarOuter {
+	background-color: white;
+	height: 201px;
+	display: inline-block;
+	position: relative;
+	vertical-align: bottom;
+	width: 1px;
+	z-index: 1;
+}
+
+.graphBarOuter:hover {
+	background-color: lightblue;
+	z-index: 2;
+}
+
+.graphBarInner {
+	border-top: 1px solid red;
+	bottom: 0;
+	left: 0;
+	position: absolute;
 	width: 100%;
 }
 
-.categoryList-category-text-container {
-	height: 30px;
-	width: 100%;
+.graphBarInnerTooltip {
+	background-color: white;
+	border: 1px solid black;
+	display: none;
+	left: 0;
+	position: absolute;
+	top: 105%;
+	white-space: nowrap;
 }
 
-.categoryList-category-text {
-	font-size: 20px;
-	padding: 5px 10px;
+.graphBarOuter:hover .graphBarInnerTooltip {
+	display: block;
 }

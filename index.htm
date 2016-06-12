@@ -17,12 +17,19 @@
 	
 	<body>
 		<div class="header">
-			<div><a href="categoryList">Category List</a></div>
-			<div><a href="productList">Product List</a></div>
+			<div class="header-main">
+				<a href="/">Home</a>
+				<a href="/stocks">Stocks</a>
+			</div>
+			<div class="header-userInfo">
+				<div ng-show="User.getIsLoggedIn()">
+					Hello {{User.getUserInfo().name || User.getUserInfo().username}} (<a href="#" ng-click="User.logout()">Log Out</a>)
+				</div>
+				<div ng-show="!User.getIsLoggedIn()">
+					<a href="register">Register</a> | <a href="login">Log In</a>
+				</div>
+			</div>
 		</div>
 		<div ng-view></div>
-		<div class="footer">
-			footer
-		</div>
 	</body>
 </html>

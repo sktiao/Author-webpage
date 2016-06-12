@@ -1,0 +1,52 @@
+<div class="content">
+	<div><h1>Stocks</h1></div>
+	<div>
+		<div>Featured Stocks</div>
+		<table class="stocksTable">
+			<thead>
+				<tr>
+					<th>Symbol</th>
+					<th>Name</th>
+					<th>Price</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="stock in featuredStocks" ng-click="stockDetails(stock.symbol)">
+					<td>{{stock.symbol}}</td>
+					<td>{{stock.name}}</td>
+					<td>${{stock.price}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div ng-show="User.getIsLoggedIn()">
+		<div>Your Portfolio:</div>
+		<div>Cash: ${{portfolio.cash}}</div>
+		<table class="stocksTable">
+			<thead>
+				<tr>
+					<th>Symbol</th>
+					<th>Name</th>
+					<th>Price</th>
+					<th>Shares</th>
+					<th>Value</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="stock in portfolio.stocks" ng-click="stockDetails(stock.symbol)">
+					<td>{{stock.symbol}}</td>
+					<td>{{stock.name}}</td>
+					<td style="text-align:right">${{stock.price}}</td>
+					<td style="text-align:right">{{stock.shares}}</td>
+					<td style="text-align:right">${{stock.value}}</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="4" style="text-align:right">Total Value:</td>
+					<td style="text-align:right">${{portfolio.totalValue}}</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+</div>

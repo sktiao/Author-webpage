@@ -1,0 +1,34 @@
+<div class="content">
+	<div><h1>Details for {{stock.name}} ({{stock.symbol}})</h1></div>
+	<div>Company name: {{stock.name}}</div>
+	<div>Stock symbol: {{stock.symbol}}</div>
+	<div>Price: ${{stock.price}}</div>
+	
+	<div ng-show="User.getIsLoggedIn()">
+		buy, sell, etc
+	</div>
+	<div class="graphContainer">
+		<div class="graph">
+			<div class="xAxis">
+				<div class="xAxis-left"><div>{{graph.start}}</div></div>
+				<div class="xAxis-right"><div>{{graph.end}}</div></div>
+				<div class="xAxis-marker"></div>
+			</div>
+			<div class="yAxis">
+				<div class="yAxis-top"><div>${{graph.max}}</div></div>
+				<div class="yAxis-bottom"><div>${{graph.min}}</div></div>
+				<div class="yAxis-marker"></div>
+				<div class="yAxis-marker"></div>
+				<div class="yAxis-marker"></div>
+				<div class="yAxis-marker"></div>
+			</div>
+			<div class="graphBarOuter" ng-repeat="bar in graph.bars" ng-style="{'width':graph.width+'px'}">
+				<div class="graphBarInner" ng-style="{'height':bar.height+'px'}"></div>
+				<div class="graphBarInnerTooltip">
+					<div>Date: {{bar.date}}</div>
+					<div>Price: ${{bar.open}}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,6 +1,9 @@
 <?php
-	$db_host = "localhost";
-	$db_user = "webAppUser";
-	$db_pass = "webAppPass";
-	$db_name = "webApp";
+	define("DB_HOST", "localhost");
+	define("DB_USER", "webAppUser");
+	define("DB_PASS", "webAppPass");
+	define("DB_NAME", "webApp");
+	
+	define("TOKEN_KEY", "changeMeLater");
+	define("TOKEN_LIFESPAN", 600);
 ?>
