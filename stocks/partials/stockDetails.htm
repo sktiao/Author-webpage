@@ -1,12 +1,11 @@
 <div class="content">
+	<div>Stock Symbol Search: <input type="text" ng-model="symbolToSearch" /><input type="button" value="Search" ng-click="searchStock()" /></div>
 	<div><h1>Details for {{stock.name}} ({{stock.symbol}})</h1></div>
 	<div>Company name: {{stock.name}}</div>
 	<div>Stock symbol: {{stock.symbol}}</div>
-	<div>Price: ${{stock.price}}</div>
+	<div>Current Price: ${{stock.price}}</div>
 	
-	<div ng-show="User.getIsLoggedIn()">
-		buy, sell, etc
-	</div>
+	<div><h2>Historical Data</h2></div>
 	<div class="graphContainer">
 		<div class="graph">
 			<div class="xAxis">
@@ -31,4 +30,12 @@
 			</div>
 		</div>
 	</div>
+	
+	<div ng-show="User.getIsLoggedIn()">
+		<div>You have ${{(portfolio.cash).toFixed(2)}} in cash.</div>
+		<div>You own {{symbolSharesOwned}} shares of {{symbol}}.</div>
+		<div>Buy: <input type="text" size="6" ng-model="sharesToBuy" /> shares <input type="button" value="Buy" ng-click="buyStock()" /></div>
+		<div>Sell: <input type="text" size="6" ng-model="sharesToSell" /> shares <input type="button" value="Sell" ng-click="sellStock()" /></div>
+	</div>
+
 </div>

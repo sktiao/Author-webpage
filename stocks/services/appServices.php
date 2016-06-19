@@ -27,7 +27,7 @@
 				echo("no data");
 			}
 		} else {
-			echo("invalid token");
+			echo("no token");
 		}
 	}
 	if ($post->request == 'logout') {
