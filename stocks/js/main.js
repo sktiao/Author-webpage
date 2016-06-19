@@ -168,7 +168,7 @@ angular.module('webApp', ['ngRoute'])
 	var featuredStocksSymbols = 'GOOG,YHOO,TSLA,NVDA,AAPL';
 	$scope.featuredStocks = [];
 	$http
-	.jsonp('http://finance.yahoo.com/webservice/v1/symbols/'+featuredStocksSymbols+'/quote?format=json&view=detail&callback=JSON_CALLBACK')
+	.jsonp('https://finance.yahoo.com/webservice/v1/symbols/'+featuredStocksSymbols+'/quote?format=json&view=detail&callback=JSON_CALLBACK')
 	.then(function(res) {
 		if (res.data.list.resources.length) {
 			for (var i=0; i<res.data.list.resources.length; i++) {
@@ -195,7 +195,7 @@ angular.module('webApp', ['ngRoute'])
 				portfolioSymbols += $scope.portfolio.stocks[i].symbol+',';
 			}
 			$http
-			.jsonp('http://finance.yahoo.com/webservice/v1/symbols/'+portfolioSymbols+'/quote?format=json&view=detail&callback=JSON_CALLBACK')
+			.jsonp('https://finance.yahoo.com/webservice/v1/symbols/'+portfolioSymbols+'/quote?format=json&view=detail&callback=JSON_CALLBACK')
 			.then(function(res) {
 				$scope.portfolio.totalValue = 0;
 				if (res.data.list.resources.length) {
@@ -235,7 +235,7 @@ angular.module('webApp', ['ngRoute'])
 	
 	$scope.getHistoricalData = function(days) {
 		$http
-		.jsonp('http://finance.yahoo.com/webservice/v1/symbols/'+$scope.symbol+'/quote?format=json&view=detail&callback=JSON_CALLBACK')
+		.jsonp('https://finance.yahoo.com/webservice/v1/symbols/'+$scope.symbol+'/quote?format=json&view=detail&callback=JSON_CALLBACK')
 		.then(function(res) {
 			if (res.data.list.resources.length) {
 				$scope.stock = res.data.list.resources[0].resource.fields;
@@ -287,7 +287,7 @@ angular.module('webApp', ['ngRoute'])
 	
 	$scope.buyStock = function() {
 		$http
-		.jsonp('http://finance.yahoo.com/webservice/v1/symbols/'+$scope.symbol+'/quote?format=json&view=detail&callback=JSON_CALLBACK')
+		.jsonp('https://finance.yahoo.com/webservice/v1/symbols/'+$scope.symbol+'/quote?format=json&view=detail&callback=JSON_CALLBACK')
 		.then(function(res) {
 			if (res.data.list.resources.length) {
 				$scope.stock.realPrice = parseFloat(res.data.list.resources[0].resource.fields.price);
