@@ -21,7 +21,7 @@
 				<p>Cash: {{portfolio.cash | currency}}</p>
 				<p>Portfolio Value: {{portfolioValue | currency}}</p>
 				<p>Total Networth: {{portfolio.cash + portfolioValue | currency}}</p>
-				<table>
+				<table class="portfolio-stocks-table">
 					<thead>
 						<tr>
 							<th>Stock Symbol</th>
@@ -60,7 +60,7 @@
 				</form>
 				<p style="color:red">{{searchError}}</p>
 				<h3>Results</h3>
-				<table>
+				<table class="search-results-table">
 					<thead>
 						<tr>
 							<th>Symbol</th>

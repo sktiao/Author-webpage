@@ -52,7 +52,8 @@ th, td {
 	padding: 10px;
 }
 
-tbody tr {
+.portfolio-stocks-table tbody tr,
+.search-results-table tbody tr {
 	cursor: pointer;
 }
 
@@ -64,7 +65,8 @@ tbody tr:nth-child(2n+1) {
 	background-color: ghostwhite;
 }
 
-tbody tr:hover {
+.portfolio-stocks-table tbody tr:not(:first-child):hover,
+.search-results-table tbody tr:not(:first-child):hover {
 	background-color: lightyellow;
 }
 
