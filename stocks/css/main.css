@@ -4,11 +4,28 @@ body {
 
 .content {
 	margin: 0 auto;
-	width: 1000px;
+	width: 90%;
+}
+
+section {
+	border-bottom: 1px solid black;
+	margin-top: 20px;
+	padding-bottom: 20px;
 }
 
 h1 {
+	font-size: 4em;
+	line-height: 1em;
+}
+
+h2{
 	font-size: 3em;
+	line-height: 1em;
+	margin-bottom: 0.5em;
+}
+
+h3{
+	font-size: 2em;
 	line-height: 1em;
 	margin-bottom: 0.5em;
 }
@@ -16,6 +33,10 @@ h1 {
 p {
 	line-height: 1.5em;
 	margin-bottom: 1em;
+}
+
+table {
+	width: 100%;
 }
 
 thead tr {
@@ -31,8 +52,20 @@ th, td {
 	padding: 10px;
 }
 
-tbody tr:nth-child(2n) {
-	background-color: #eee;
+tbody tr {
+	cursor: pointer;
+}
+
+tbody tr:first-child {
+	cursor: default;
+}
+
+tbody tr:nth-child(2n+1) {
+	background-color: ghostwhite;
+}
+
+tbody tr:hover {
+	background-color: lightyellow;
 }
 
 tfoot tr {
@@ -41,4 +74,35 @@ tfoot tr {
 
 tfoot td {
 	font-weight: bold;
+}
+
+/* modals */
+.modal {
+	bottom: 0;
+	display: none;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+}
+
+.modal.active {
+	display: block;
+}
+
+.modal-shadow {
+	background-color: rgba(0,0,0,0.5);
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: -1;
+}
+
+.modal-content {
+	background-color: white;
+	margin: 20% auto;
+	padding: 20px;
+	width: 800px;
 }

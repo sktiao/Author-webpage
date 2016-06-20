@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="stocksApp" ng-controller="appController as appCtrl">
+<html ng-app="stocksApp" ng-controller="AppController">
 	<head>
 		<title>Stock Portfolio Simulator</title>
 		<meta charset="utf-8">
@@ -13,39 +13,115 @@
 	
 	<body>
 		<div class="content">
-			<h1>Your Portfolio</h1>
-			<p>Cash: {{portfolio.cash | currency}}</p>
-			<p>Portfolio Value: {{portfolioValue | currency}}</p>
-			<p>Total Networth: {{portfolio.cash+portfolioValue | currency}}</p>
-			<table>
-				<thead>
-					<tr>
-						<th>Stock Symbol</th>
-						<th>Shares</th>
-						<th>Average Price Bought</th>
-						<th>Total Value Bought</th>
-						<th>Current Price</th>
-						<th>Total Current Value</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr ng-repeat="stock in portfolio.stocks">
-						<td>{{stock.symbol}}</td>
-						<td style="text-align: right">{{stock.shares}}</td>
-						<td style="text-align: right">{{stock.priceAvg | currency}}</td>
-						<td style="text-align: right">{{stock.shares * stock.priceAvg | currency}}</td>
-						<td style="text-align: right">{{stock.priceCurrent | currency}}</td>
-						<td style="text-align: right">{{stock.shares * stock.priceCurrent | currency}}</td>
-					</tr>
-				</tbody>
-				<tfoot>
-					<tr>
-						<td colspan="4"></td>
-						<td>Portfolio Value:</td>
-						<td style="text-align: right">{{portfolioValue | currency}}</td>
-					</tr>
-				</tfoot>
-			</table>
+			<section>
+				<h1 style="text-align:center">Stock Portfolio Simulation</h1>
+			</section>
+			<section>
+				<h2>Your Portfolio</h2>
+				<p>Cash: {{portfolio.cash | currency}}</p>
+				<p>Portfolio Value: {{portfolioValue | currency}}</p>
+				<p>Total Networth: {{portfolio.cash + portfolioValue | currency}}</p>
+				<table>
+					<thead>
+						<tr>
+							<th>Stock Symbol</th>
+							<th>Shares</th>
+							<th>Average Price Bought</th>
+							<th>Total Value Bought</th>
+							<th>Current Price</th>
+							<th>Total Current Value</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-show="portfolio.stocks.length==0">
+							<td colspan="6" style="text-align:center">Your portfolio is empty! Search for some stocks to buy.</td>
+						</tr>
+						<tr ng-repeat="stock in portfolio.stocks track by $index" ng-click="showDetails(stock.symbol)">
+							<td>{{stock.symbol}}</td>
+							<td style="text-align:right">{{stock.shares}}</td>
+							<td style="text-align:right">{{stock.priceAvg | currency}}</td>
+							<td style="text-align:right">{{stock.shares * stock.priceAvg | currency}}</td>
+							<td style="text-align:right">{{stock.priceCurrent | currency}}</td>
+							<td style="text-align:right">{{stock.shares * stock.priceCurrent | currency}}</td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td colspan="5"></td>
+							<td style="text-align:right">Portfolio Value: {{portfolioValue | currency}}</td>
+						</tr>
+					</tfoot>
+				</table>
+			</section>
+			<section>
+				<h2>Search for Stock</h2>
+				<form ng-submit="search()">
+					Symbol: <input type="text" ng-model="searchSymbol" /> <input type="submit" value="Search" />
+				</form>
+				<p style="color:red">{{searchError}}</p>
+				<h3>Results</h3>
+				<table>
+					<thead>
+						<tr>
+							<th>Symbol</th>
+							<th>Company Name</th>
+							<th>Price</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-show="searchResults.length==0">
+							<td colspan="3" style="text-align:center">Type in a stock symbol and hit search!</td>
+						</tr>
+						<tr ng-repeat="result in searchResults track by $index" ng-click="showDetails(result.symbol)">
+							<td>{{result.symbol | uppercase}}</td>
+							<td>{{result.name}}</td>
+							<td style="text-align:right">{{result.price | currency}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+			<section>
+				<h2>Transaction History</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Date</th>
+							<th>Transaction</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-show="transactionHistory.length==0">
+							<td colspan="2" style="text-align:center">Your history is empty!</td>
+						</tr>
+						<tr ng-repeat="transaction in transactionHistory.history track by $index">
+							<td>{{transaction.date}}</td>
+							<td>{{transaction.text}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+			<section>
+				<h2>Reset Portfolio</h2>
+				<p>You can reset your portfolio by click the button. Be warned, this cannot be undone!<p>
+				<p><input type="button" value="Reset Portfolio" ng-click="resetPortfolio()" /></p>
+			</section>
+			<div class="modal stockDetailsModal">
+				<div class="modal-shadow"></div>
+				<div class="modal-content">
+					<h2>Details for {{stockDetails.name}} ({{stockDetails.symbol}})</h2>
+					<p>Price: {{stockDetails.price | currency}}</p>
+					<div>
+						<h3>Buy</h3>
+						<p>Available cash: {{portfolio.cash | currency}}</p>
+						<form ng-submit="buyStock()"><input type="number" ng-model="sharesToBuy" /> shares, costing {{sharesToBuy * stockDetails.price | currency}} <input type="submit" value="Buy" /></form>
+					</div>
+					<div>
+						<h3>Sell</h3>
+						<p>Shares owned: {{stockDetails.shares}}</p>
+						<form ng-submit="sellStock()"><input type="number" ng-model="sharesToSell" /> shares, worth {{sharesToSell * stockDetails.price | currency}} <input type="submit" value="Sell" /></form>
+					</div>
+				</div>
+			</div>
 		</div>
 	</body>
 </html>

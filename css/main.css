@@ -1,3 +1,13 @@
+/* remove later */
+.work-in-progress-message {
+	background-color: red;
+	left: 0;
+	position: fixed;
+	top: 0;
+	z-index: 1000;
+}
+/* /remove later */
+
 body {
 	background-color: red;
 	font-family: 'Calibri', 'Century Gothic', 'Arial', sans-serif;
