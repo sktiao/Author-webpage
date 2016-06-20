@@ -1,0 +1,44 @@
+body {
+	font-family: 'Calibri', 'Arial', sans-serif;
+}
+
+.content {
+	margin: 0 auto;
+	width: 1000px;
+}
+
+h1 {
+	font-size: 3em;
+	line-height: 1em;
+	margin-bottom: 0.5em;
+}
+
+p {
+	line-height: 1.5em;
+	margin-bottom: 1em;
+}
+
+thead tr {
+	background-color: lightblue;
+}
+
+th {
+	font-weight: bold;
+}
+
+th, td {
+	border: 1px solid black;
+	padding: 10px;
+}
+
+tbody tr:nth-child(2n) {
+	background-color: #eee;
+}
+
+tfoot tr {
+	background-color: lightblue;
+}
+
+tfoot td {
+	font-weight: bold;
+}
