@@ -42,7 +42,7 @@ $(function() {
 			// fetch price data from yahoo finance
 			if (portfolioSymbols.length > 0) {
 				$http
-				.jsonp('http://finance.yahoo.com/webservice/v1/symbols/'+portfolioSymbols+'/quote?format=json&view=detail&callback=JSON_CALLBACK')
+				.jsonp('https://finance.yahoo.com/webservice/v1/symbols/'+portfolioSymbols+'/quote?format=json&view=detail&callback=JSON_CALLBACK')
 				.then(function(res) {
 					var arr = res.data.list.resources;
 					if (arr.length === $scope.portfolio.stocks.length) {
@@ -60,7 +60,7 @@ $(function() {
 		// details
 		$scope.showDetails = function(symbol) {
 			$http
-			.jsonp('http://finance.yahoo.com/webservice/v1/symbols/'+symbol+'/quote?format=json&view=detail&callback=JSON_CALLBACK')
+			.jsonp('https://finance.yahoo.com/webservice/v1/symbols/'+symbol+'/quote?format=json&view=detail&callback=JSON_CALLBACK')
 			.then(function(res) {
 				if (res.data.list.resources.length === 1) {
 					$scope.stockDetails = res.data.list.resources[0].resource.fields;
@@ -83,7 +83,7 @@ $(function() {
 		$scope.buyStock = function() {
 			if (parseInt($scope.sharesToBuy) === $scope.sharesToBuy && $scope.sharesToBuy > 0) {
 				$http
-				.jsonp('http://finance.yahoo.com/webservice/v1/symbols/'+$scope.stockDetails.symbol+'/quote?format=json&view=detail&callback=JSON_CALLBACK')
+				.jsonp('https://finance.yahoo.com/webservice/v1/symbols/'+$scope.stockDetails.symbol+'/quote?format=json&view=detail&callback=JSON_CALLBACK')
 				.then(function(res) {
 					if (res.data.list.resources.length === 1) {
 						var price = res.data.list.resources[0].resource.fields.price;
@@ -121,7 +121,7 @@ $(function() {
 		$scope.sellStock = function() {
 			if (parseInt($scope.sharesToSell) === $scope.sharesToSell && $scope.sharesToSell > 0) {
 				$http
-				.jsonp('http://finance.yahoo.com/webservice/v1/symbols/'+$scope.stockDetails.symbol+'/quote?format=json&view=detail&callback=JSON_CALLBACK')
+				.jsonp('https://finance.yahoo.com/webservice/v1/symbols/'+$scope.stockDetails.symbol+'/quote?format=json&view=detail&callback=JSON_CALLBACK')
 				.then(function(res) {
 					if (res.data.list.resources.length === 1) {
 						var price = res.data.list.resources[0].resource.fields.price;
@@ -175,7 +175,7 @@ $(function() {
 		$scope.searchResults = [];
 		$scope.search = function() {
 			$http
-			.jsonp('http://finance.yahoo.com/webservice/v1/symbols/'+$scope.searchSymbol+'/quote?format=json&view=detail&callback=JSON_CALLBACK')
+			.jsonp('https://finance.yahoo.com/webservice/v1/symbols/'+$scope.searchSymbol+'/quote?format=json&view=detail&callback=JSON_CALLBACK')
 			.then(function(res) {
 				var arr = res.data.list.resources;
 				if (arr.length > 0) {
