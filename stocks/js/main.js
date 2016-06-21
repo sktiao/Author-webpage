@@ -22,10 +22,12 @@ $(function() {
 			fetchPriceData();
 		}
 		
+		$scope.noTransactions = true;
 		// load transaction history data from cookie, or create one if first time
 		// in a production app, the user would login, and user data would be fetched from a database through a server backend
 		if (document.cookie.replace(/(?:(?:^|.*;\s*)transactionHistory\s*\=\s*([^;]*).*$)|^.*$/, "$1") !== '') {
 			$scope.transactionHistory = JSON.parse(document.cookie.replace(/(?:(?:^|.*;\s*)transactionHistory\s*\=\s*([^;]*).*$)|^.*$/, "$1"));
+			$scope.noTransactions = false;
 		} else {
 			document.cookie = 'transactionHistory={"history":[]}';
 			$scope.transactionHistory = JSON.parse(document.cookie.replace(/(?:(?:^|.*;\s*)transactionHistory\s*\=\s*([^;]*).*$)|^.*$/, "$1"));
@@ -73,6 +75,7 @@ $(function() {
 					$scope.sharesToBuy = 0;
 					$scope.sharesToSell = 0;
 					$('.stockDetailsModal').addClass('active');
+					$('body').addClass('noScroll');
 				} else {
 					console.log('invalid symbol');
 				}
@@ -81,6 +84,7 @@ $(function() {
 		
 		$scope.closeDetails = function() {
 			$('.stockDetailsModal').removeClass('active');
+			$('body').removeClass('noScroll');
 		};
 		
 		// buy stock

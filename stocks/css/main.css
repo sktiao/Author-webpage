@@ -2,6 +2,10 @@ body {
 	font-family: 'Calibri', 'Arial', sans-serif;
 }
 
+body.noScroll {
+	overflow:hidden;
+}
+
 @media (max-width: 767px) {
 	.mobile-hide {
 		display: none;

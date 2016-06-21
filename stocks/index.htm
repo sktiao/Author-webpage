@@ -1,7 +1,7 @@
 <!doctype html>
 <html ng-app="stocksApp" ng-controller="AppController">
 	<head>
-		<title>Stock Portfolio Simulator</title>
+		<title>Stock Portfolio Simulation</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 		<link rel="stylesheet" type="text/css" href="css/reset.css"/>
@@ -16,6 +16,12 @@
 		<div class="container">
 			<section>
 				<h1 style="text-align:center">Stock Portfolio Simulation</h1>
+			</section>
+			<section ng-show="noTransactions">
+				<p>Welcome to the Stock Portfolio Simulation!</p>
+				<p>You have been granted $10,000.00 in virtual money to buy stocks with. Below you'll find your virtual portfolio, where you can keep track of your virtual stocks. Under that, you can search for stocks using their stock ticker symbols (e.g. GOOG for Google).</p>
+				<p>Clicking on a row in your portfolio or in the search results opens a dialogue window to buy and sell shares of that stock.</p>
+				<p>If you want to start over, you can reset the simulation at the very bottom. Be warned, this action cannot be undone!</p>
 			</section>
 			<section>
 				<h2>Your Portfolio</h2>
@@ -57,7 +63,7 @@
 			<section>
 				<h2>Search for Stock</h2>
 				<form ng-submit="search()">
-					Symbol: <input type="text" ng-model="searchSymbol" /> <input type="submit" value="Search" />
+					Symbol: <input type="text" ng-model="searchSymbol" size="10" /> <input type="submit" value="Search" />
 				</form>
 				<p style="color:red">{{searchError}}</p>
 				<h3>Results</h3>
