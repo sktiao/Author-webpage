@@ -99,32 +99,28 @@ p {
 	right: 0;
 }
 
-.sectionIndicator-dot-container {
-	margin-bottom: 8px;
-}
-
-.sectionIndicator-dot-container:last-child {
-	margin-bottom: 0;
-}
-
 .sectionIndicator-dot {
 	border: 1px solid darkgrey;
 	border-radius: 8px;
 	cursor: pointer;
-	display: table-cell;
 	font-size: 0;
 	height: 16px;
+	margin-bottom: 8px;
 	overflow: hidden;
 	text-align: center;
-	transition: background-color 0.5s 0s,
-		border-color 0.5s 0s,
-		color 0.5s 0s,
-		font-size 0.5s 0s,
-		height 0.5s 0s,
-		padding 0.5s 0s,
-		width 0.5s 0s;
+	transition: background-color 0.2s 0s,
+		border-color 0.2s 0s,
+		color 0.2s 0s,
+		font-size 0.2s 0s,
+		height 0.2s 0s,
+		padding 0.2s 0s,
+		width 0.2s 0s;
 	vertical-align: middle;
 	width: 16px;
+}
+
+.sectionIndicator-dot:last-child {
+	margin-bottom: 0;
 }
 
 .sectionIndicator-dot.active {
@@ -295,7 +291,6 @@ section {
 
 .projects-content {
 	color: maroon;
-	/text-shadow: 2px 2px 3px lightyellow;
 }
 
 .projects-content-projects {
