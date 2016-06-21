@@ -169,10 +169,10 @@ $(function() {
 		// save portfolio to cookie
 		// in a production app, the server backend would take care of updating the database
 		function savePortfolio() {
-			document.cookie = 'portfolio='+JSON.stringify($scope.portfolio);
+			document.cookie = 'portfolio='+JSON.stringify($scope.portfolio)+';expires='+(new Date(Date.now()+1000*60*60*24*365).toUTCString());
 			var truncatedHistory = $scope.transactionHistory;
 			truncatedHistory.history = truncatedHistory.history.slice(0,20);
-			document.cookie = 'transactionHistory='+JSON.stringify(truncatedHistory);
+			document.cookie = 'transactionHistory='+JSON.stringify(truncatedHistory)+';expires='+(new Date(Date.now()+1000*60*60*24*365).toUTCString());
 		}
 		
 		// search
