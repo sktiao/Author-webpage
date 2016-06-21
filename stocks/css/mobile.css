@@ -2,13 +2,13 @@ body {
 	font-family: 'Calibri', 'Arial', sans-serif;
 }
 
-.main-hide {
+.mobile-hide {
 	display: none;
 }
 
 .content {
 	margin: 0 auto;
-	width: 1000px;
+	width: 90%;
 }
 
 section {
@@ -18,18 +18,18 @@ section {
 }
 
 h1 {
-	font-size: 4em;
+	font-size: 2em;
 	line-height: 1em;
 }
 
 h2{
-	font-size: 3em;
+	font-size: 1.5em;
 	line-height: 1em;
 	margin-bottom: 0.5em;
 }
 
 h3{
-	font-size: 2em;
+	font-size: 1.2em;
 	line-height: 1em;
 	margin-bottom: 0.5em;
 }
@@ -112,7 +112,7 @@ tfoot td {
 
 .modal-content {
 	background-color: white;
-	margin: 20% auto;
+	margin: 5% auto;
 	padding: 20px;
-	width: 800px;
+	width: 90%;
 }

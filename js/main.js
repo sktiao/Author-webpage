@@ -13,6 +13,7 @@ $(function() {
 		}, 100);
 	});
 	
+	$('body').addClass('js');
 	$('.loading-mask').addClass('done');
 	
 	var currentSection = 0;
@@ -31,33 +32,35 @@ $(function() {
 	
 	var canScroll = true;
 	var scrollTimeout;
-	$(window).on('mousewheel DOMMouseScroll', function(e) {
-		e.preventDefault();
-		if (canScroll) {
-			var dir = (e.originalEvent.wheelDelta || -e.originalEvent.detail);
-			if (dir > 0) {
-				if (currentSection > 0) {
-					canScroll = false;
-					scrollTo(currentSection - 1);
-					window.clearTimeout(scrollTimeout);
-					scrollTimeout = window.setTimeout(function() {
-						canScroll = true;
+	if ($('.frame').css('position') === 'relative') {
+		$(window).on('mousewheel DOMMouseScroll', function(e) {
+			e.preventDefault();
+			if (canScroll) {
+				var dir = (e.originalEvent.wheelDelta || -e.originalEvent.detail);
+				if (dir > 0) {
+					if (currentSection > 0) {
+						canScroll = false;
+						scrollTo(currentSection - 1);
 						window.clearTimeout(scrollTimeout);
-					}, 500);
-				}
-			} else {
-				if (currentSection < sectionMax) {
-					canScroll = false;
-					scrollTo(currentSection + 1);
-					window.clearTimeout(scrollTimeout);
-					scrollTimeout = window.setTimeout(function() {
-						canScroll = true;
+						scrollTimeout = window.setTimeout(function() {
+							canScroll = true;
+							window.clearTimeout(scrollTimeout);
+						}, 500);
+					}
+				} else {
+					if (currentSection < sectionMax) {
+						canScroll = false;
+						scrollTo(currentSection + 1);
 						window.clearTimeout(scrollTimeout);
-					}, 500);
+						scrollTimeout = window.setTimeout(function() {
+							canScroll = true;
+							window.clearTimeout(scrollTimeout);
+						}, 500);
+					}
 				}
 			}
-		}
-	});
+		});
+	}
 	
 	$('.sectionIndicator-dot').on('click', function() {
 		scrollTo($(this).index());
@@ -81,5 +84,11 @@ $(function() {
 	$('.link-contact').on('click', function(e) {
 		e.preventDefault();
 		scrollTo(3);
+	});
+	
+	// projects
+	$('.projects-content-project-name').on('click', function() {
+		$('.projects-content-project-details-container').children().removeClass('active');
+		$('.projects-content-project-details').eq($(this).index()).addClass('active');
 	});
 });

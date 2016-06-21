@@ -8,9 +8,16 @@
 }
 /* /remove later */
 
+* {
+	box-sizing: border-box;
+}
+
 body {
-	font-family: 'Calibri', 'Century Gothic', 'Arial', sans-serif;
+	font-family: 'Calibri', 'Optima', 'Arial', sans-serif;
 	font-size: 24px;
+}
+
+body.js {
 	overflow: hidden;
 }
 
@@ -57,16 +64,28 @@ p {
 	width: 100%;
 }
 
+.loading-mask:not(.done) {
+	animation-name: loading-mask-fallback;
+	animation-duration: 1s;
+	animation-delay: 5s;
+	animation-fill-mode: forwards;
+}
+
+@keyframes loading-mask-fallback {
+	from {opacity: 1;}
+	to {opacity: 0; bottom:100%;}
+}
+
 .sectionIndicator {
 	background-color: white;
 	border-bottom: 1px solid darkgrey;
 	border-left: 1px solid darkgrey;
 	border-top: 1px solid darkgrey;
-	border-bottom-left-radius: 10px;
-	border-top-left-radius: 10px;
-	padding: 1rem;
+	border-bottom-left-radius: 8px;
+	border-top-left-radius: 8px;
+	padding: 8px;
 	position: fixed;
-	right: -4rem;
+	right: -40px;
 	top: 30%;
 	transition: right 0.5s 0s;
 	z-index: 99;
@@ -81,9 +100,9 @@ p {
 	border-radius: 50%;
 	cursor: pointer;
 	font-size: 0;
-	height: 1rem;
+	height: 16px;
 	margin-bottom: 20px;
-	width: 1rem;
+	width: 16px;
 }
 
 .sectionIndicator-dot:last-child {
@@ -102,16 +121,16 @@ p {
 }
 
 section {
-	height: 600px;
+	height: 40em;
 	position: relative;
 	width: 100%;
 }
 
 .content {
 	margin: 0 auto;
-	padding: 2em;
 	position: relative;
-	width: 900px;
+	top: 10%;
+	width:1000px;
 }
 
 /* top */
@@ -123,11 +142,15 @@ section {
 
 .top-content {
 	color: lightblue;
+	margin: 0 auto;
 	text-shadow: 2px 2px 3px black;
 	top: 20%;
+	position: relative;
+	width:1000px;
 }
 
 .top-content-name {
+	font-family: 'Century Gothic', 'Avant Garde', 'Calibri', 'Arial', sans-serif;
 	font-size: 3em;
 	line-height: 1em;
 	margin-bottom: 10px;
@@ -229,8 +252,13 @@ section {
 
 .about-content {
 	color: lightyellow;
-	padding-top: 5%;
 	text-shadow: 2px 2px 3px black;
+}
+
+.about-content em {
+	color: lemonchiffon;
+	color: cornsilk;
+	color: bisque;
 }
 
 .about-content-skills {
@@ -247,6 +275,7 @@ section {
 }
 
 .about-content-skills > div > p {
+	margin-bottom: 0.5em;
 	text-decoration: underline;
 }
 
@@ -257,88 +286,51 @@ section {
 
 .projects-content {
 	color: maroon;
-	text-shadow: 2px 2px 3px white;
+	text-shadow: 2px 2px 3px lightgrey;
 }
 
 .projects-content-projects {
 	position: relative;
 }
 
+.projects-content-project-details-container {
+	background-color: lightyellow;
+	height: 16em;
+}
+
+.projects-content-project-details,
 .projects-content-default-text {
-	background-color: white;
+	display: none;
 	padding: 1em;
-	position: absolute;
-	right: 2%;
-	top: 0;
-	width: 50%;
+}
+
+.projects-content-project-details.active,
+.projects-content-default-text.active {
+	display: block;
+}
+
+.projects-content-project-names-container {
+	margin-top: 20px;
+	position: relative;
 }
 
 .projects-content-project-name {
 	background-color: lightyellow;
-	color: black;
+	cursor: pointer;
+	float: left;
+	margin-bottom: 1em;
+	margin-right: 4%;
 	padding: 1em;
-	position: relative;
-	width: 33%;
+	text-align: center;
+	width: 48%;
 }
 
 .projects-content-project-name:hover {
-	width: 35%;
-}
-
-.projects-content-project-name:nth-child(2n+1) {
 	background-color: beige;
 }
 
-.projects-content-project-details {
-	background-color: inherit;
-	display: none;
-	left: 99%;
-	padding: 1em;
-	position: absolute;
-	width: 135%;
-}
-
-.projects-content-project-name:hover .projects-content-project-details {
-	display: block;
-}
-
-.projects-content-project-name:nth-child(2) .projects-content-project-details {
-	top: 0;
-}
-
-.projects-content-project-name:nth-child(3) .projects-content-project-details {
-	min-height: 4em;
-	top: -3em;
-}
-
-.projects-content-project-name:nth-child(4) .projects-content-project-details {
-	min-height: 7em;
-	top: -6em;
-}
-
-.projects-content-project-name:nth-child(5) .projects-content-project-details {
-	min-height: 10em;
-	top: -9em;
-}
-
-.projects-content-project-name:nth-child(6) .projects-content-project-details {
-	min-height: 13em;
-	top: -12em;
-}
-
-.projects-content-project-name:nth-child(7) .projects-content-project-details {
-	min-height: 16em;
-	top: -15em;
-}
-
-.projects-content-project-name:nth-child(8) .projects-content-project-details {
-	min-height: 19em;
-	top: -18em;
-}
-
-.projects-content-project-name:nth-child(9) .projects-content-project-details {
-	min-height: 22em;
-	top: -21em;
+.projects-content-project-name:nth-child(2n) {
+	margin-right: 0;
 }
 
 /* contact */

@@ -26,24 +26,23 @@
 		</div>
 		<div class="frame">
 			<section class="section-top active">
-				<div class="content top-content">
+				<div class="top-content">
 					<div class="top-content-name">Lawrence Shah</div>
 					<div class="top-content-email">lawrence.webdev@gmail.com</div>
 					<div class="top-content-links">
-						<div class="top-content-links-link link-about"><a href="#"><span class="glyphicon glyphicon-user"></span> about</a></div>
-						<div class="top-content-links-link link-projects"><a href="#"><span class="glyphicon glyphicon-briefcase"></span> projects</a></div>
-						<div class="top-content-links-link link-contact"><a href="#"><span class="glyphicon glyphicon-envelope"></span> contact</a></div>
-						<div class="top-content-links-link"><a href="#"><span class="glyphicon glyphicon-file"></span> resume</a></div>
+						<div class="top-content-links-link link-about"><a href="#section-about"><span class="glyphicon glyphicon-user"></span> about</a></div>
+						<div class="top-content-links-link link-projects"><a href="#section-projects"><span class="glyphicon glyphicon-briefcase"></span> projects</a></div>
+						<div class="top-content-links-link link-contact"><a href="#section-contact"><span class="glyphicon glyphicon-envelope"></span> contact</a></div>
 					</div>
 				</div>
 				<div class="top-down-arrow"><div class="glyphicon glyphicon-menu-down"></div></div>
 			</section>
-			<section class="section-about">
+			<section class="section-about" id="section-about">
 				<div class="about-sun"></div>
 				<div class="content about-content">
-					<h1>About Me</h1>
-					<p>My name is Lawrence Shah and I am a professional web developer based in the Bay Area in sunny California. I'm always looking for opportunities to create awesome things.</p>
-					<p>Front-end development is where I live and breathe, but I am also available for your full stack needs. I am proficient with PHP, MySQL for back-ends. Whether you need a responsive single-page web app, a smooth store-front site, or a cool personal website, I want to help you make it happen.</p>
+					<h1><span class="glyphicon glyphicon-user"></span> About Me</h1>
+					<p>My name is <em>Lawrence Shah</em> and I am a professional web developer based in the <em>Bay Area</em> in sunny <em>California</em>. I'm always looking for opportunities to create awesome things.</p>
+					<p><em>Front-end</em> development is where I live and breathe, but I am also available for your <em>full stack</em> needs. I am proficient with <em>PHP</em> and <em>MySQL</em> for back-ends. Whether you need a <em>responsive</em> single-page web app, a smooth store-front site, or a cool personal website, I want to help you make it happen.</p>
 					<p>In my spare time, I enjoy working on personal projects and following up on the latest technologies and scientific developments around the web and the world. I'm currently exploring possibilities with the MEAN stack (MongoDB, Express.js, Angular.js, Node.js).</p>
 					<div class="about-content-skills">
 						<h2>Skills</h2>
@@ -53,7 +52,9 @@
 								<li>HTML 5</li>
 								<li>CSS 3</li>
 								<li>JavaScript</li>
+								<li>AJAX</li>
 								<li>jQuery</li>
+								<li>Bootstrap</li>
 								<li>Angular.js</li>
 							</ul>
 						</div>
@@ -62,36 +63,43 @@
 							<ul>
 								<li>PHP</li>
 								<li>MySQL</li>
+								<li>Apache</li>
 							</ul>
 						</div>
 					</div>
 				</div>
 			</section>
-			<section class="section-projects">
+			<section class="section-projects" id="section-projects">
 				<div class="content projects-content">
-					<h1>Projects</h1>
+					<h1><span class="glyphicon glyphicon-briefcase"></span> Projects</h1>
 					<div class="projects-content-projects">
-						<div class="projects-content-default-text">
-							<p>Here is a collection of personal projects I have worked on or are currently working on.</p>
-							<p>Hover over each one to see a description of the project. Some of them even have links you can click on to try it out for yourself!</p>
-						</div>
-						<div class="projects-content-project-name">
-							Stocks Portfolio Simulation
+						<div class="projects-content-project-details-container">
+						<!-- spacing currently accomodates roughly 4 projects at 1024x768 to 10 projects at 1920x1080 -->
+							<div class="projects-content-default-text active">
+								<p>Here is a collection of personal projects I have worked on or are currently working on.</p>
+								<p>Click each one to see a description of the project. Some of them even have links you can click on to try it out for yourself!</p>
+							</div>
 							<div class="projects-content-project-details">
 								<h2>Stocks Portfolio Simulation</h2>
 								<p>Buy! Sell! Test out the stock market without risking a single dollar of your own money!</p>
 								<p>This simulation allows you to fill your virtual portfolio and track its ups and downs. Based on actual financial data. No real money involved.</p>
-								<p>Tags: Angular.js, PHP</p>
+								<p>Tags: Angular.js, AJAX</p>
 								<p><a href="/stocks" target="_new">Click to View</a></p>
+							</div>
+						</div>
+						<div class="projects-content-project-names-container">
+						<!-- spacing currently accomodates roughly 4 projects at 1024x768 to 10 projects at 1920x1080 -->
+							<div class="projects-content-project-name">
+								Stocks Portfolio Simulation
 							</div>
 						</div>
 					</div>
 				</div>
 			</section>
-			<section class="section-contact">
+			<section class="section-contact" id="section-contact">
 				<div class="content contact-content">
-					<h1>Contact</h1>
-					<p>The best way to get in touch with me for work related inquiries is through email. You can reach me at lawrence.webdev@gmail.com with a summary of your project and your needs. Please include your budget and timeframe if possible. Be as detailed as you would like.</p>
+					<h1><span class="glyphicon glyphicon-envelope"></span> Contact</h1>
+					<p>The best way to get in touch with me for work related inquiries is through email. You can reach me at lawrence.webdev@gmail.com with a summary of your project and your needs. Please include your budget and timeframe if possible. The more details you provide, the faster and more accurately I can respond to you with an estimate.</p>
 				</div>
 			</section>
 		</div>
