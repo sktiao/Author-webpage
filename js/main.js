@@ -13,7 +13,9 @@ $(function() {
 		}, 100);
 	});
 	
-	$('.loading-mask').addClass('done');
+	$('<img/>').on('load', function() {
+		$('.loading-mask').addClass('done');
+	}).attr('src','img/city-lightblue.png');
 	
 	var currentSection = 0;
 	var sectionMax = 3;

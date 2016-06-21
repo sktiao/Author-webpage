@@ -67,18 +67,6 @@ p {
 	width: 100%;
 }
 
-.loading-mask:not(.done) {
-	animation-name: loading-mask-fallback;
-	animation-duration: 1s;
-	animation-delay: 5s;
-	animation-fill-mode: forwards;
-}
-
-@keyframes loading-mask-fallback {
-	from {opacity: 1;}
-	to {opacity: 0; bottom:100%;}
-}
-
 .sectionIndicator {
 	background-color: lightyellow;
 	border-bottom: 1px solid darkgrey;
