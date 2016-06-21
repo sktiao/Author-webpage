@@ -8,29 +8,13 @@
 }
 /* /remove later */
 
-* {
-	box-sizing: border-box;
-}
-
 body {
-	font-family: 'Calibri', 'Optima', 'Arial', sans-serif;
+	font-family: 'Calibri',
+		'Optima',
+		'Arial',
+		sans-serif;
 	font-size: 24px;
-}
-
-body.js {
 	overflow: hidden;
-}
-
-h1 {
-	font-size: 2em;
-	line-height: 1em;
-	margin-bottom: 0.5em;
-}
-
-h2 {
-	font-size: 1.5em;
-	line-height: 1em;
-	margin-bottom: 0.5em;
 }
 
 p {
@@ -38,8 +22,26 @@ p {
 	margin-bottom: 1em;
 }
 
+@media (max-width: 767px) {
+	.mobile-mask {
+		background-color: lightgrey;
+		bottom: 0;
+		left: 0;
+		position: fixed;
+		right: 0;
+		top: 0;
+		z-index: 1000;
+	}
+}
+
+@media (min-width: 768px) {
+	.mobile-mask {
+		display: none;
+	}
+}
+
 .loading-mask {
-	background-color: white;
+	background-color: lightyellow;
 	bottom: 0;
 	left: 0;
 	opacity: 1;
@@ -47,7 +49,8 @@ p {
 	position: fixed;
 	right: 0;
 	top: 0;
-	transition: bottom 0s 0.5s, opacity 0.3s 0s;
+	transition: bottom 0s 0.5s,
+		opacity 0.3s 0s;
 	z-index: 100;
 }
 
@@ -77,40 +80,65 @@ p {
 }
 
 .sectionIndicator {
-	background-color: white;
+	background-color: lightyellow;
 	border-bottom: 1px solid darkgrey;
 	border-left: 1px solid darkgrey;
 	border-top: 1px solid darkgrey;
 	border-bottom-left-radius: 8px;
 	border-top-left-radius: 8px;
+	bottom: 10%;
 	padding: 8px;
 	position: fixed;
 	right: -40px;
-	top: 30%;
 	transition: right 0.5s 0s;
 	z-index: 99;
 }
 
-.sectionIndicator.active {
+.sectionIndicator.active,
+.sectionIndicator:hover {
 	right: 0;
+}
+
+.sectionIndicator-dot-container {
+	margin-bottom: 8px;
+}
+
+.sectionIndicator-dot-container:last-child {
+	margin-bottom: 0;
 }
 
 .sectionIndicator-dot {
 	border: 1px solid darkgrey;
-	border-radius: 50%;
+	border-radius: 8px;
 	cursor: pointer;
+	display: table-cell;
 	font-size: 0;
 	height: 16px;
-	margin-bottom: 20px;
+	overflow: hidden;
+	text-align: center;
+	transition: background-color 0.5s 0s,
+		border-color 0.5s 0s,
+		color 0.5s 0s,
+		font-size 0.5s 0s,
+		height 0.5s 0s,
+		padding 0.5s 0s,
+		width 0.5s 0s;
+	vertical-align: middle;
 	width: 16px;
 }
 
-.sectionIndicator-dot:last-child {
-	margin-bottom: 0;
+.sectionIndicator-dot.active {
+	background-color: #99ccff;
+	border: 1px solid #99ccff;
+	color: lightyellow;
+	height: 24px;
 }
 
-.sectionIndicator-dot.active {
-	background-color: lightgrey;
+.sectionIndicator:hover .sectionIndicator-dot {
+	font-size: 16px;
+	height: 40px;
+	padding: 0.5em;
+	width: 72px;
 }
 
 .frame {
@@ -126,11 +154,13 @@ section {
 	width: 100%;
 }
 
+.tall-container {
+	height: 100%;
+}
+
 .content {
-	margin: 0 auto;
 	position: relative;
-	top: 10%;
-	width:1000px;
+	top: 5%;
 }
 
 /* top */
@@ -138,19 +168,21 @@ section {
 	background-color: #5f6eb3;
 	background-image: url('../img/city-lightblue.png');
 	background-size: cover;
+	color: #99ccff;
 }
 
 .top-content {
-	color: lightblue;
-	margin: 0 auto;
+	position: relative;
 	text-shadow: 2px 2px 3px black;
 	top: 20%;
-	position: relative;
-	width:1000px;
 }
 
 .top-content-name {
-	font-family: 'Century Gothic', 'Avant Garde', 'Calibri', 'Arial', sans-serif;
+	font-family: 'Century Gothic',
+		'Avant Garde',
+		'Calibri',
+		'Arial',
+		sans-serif;
 	font-size: 3em;
 	line-height: 1em;
 	margin-bottom: 10px;
@@ -158,7 +190,6 @@ section {
 }
 
 .top-content-email {
-	display: none;
 	font-size: 1.5em;
 	line-height: 1em;
 	margin-bottom: 10px;
@@ -177,11 +208,7 @@ section {
 
 .top-content-links-link:hover {
 	color: aqua;
-}
-
-.top-content-links-link > a {
-	color: inherit;
-	text-decoration: none;
+	cursor: pointer;
 }
 
 .top-down-arrow {
@@ -261,24 +288,6 @@ section {
 	color: bisque;
 }
 
-.about-content-skills {
-	text-align: center;
-}
-
-.about-content-skills > div {
-	display: inline-block;
-	vertical-align: top;
-}
-
-.about-content-skills > div:nth-child(2) {
-	margin-right: 2em;
-}
-
-.about-content-skills > div > p {
-	margin-bottom: 0.5em;
-	text-decoration: underline;
-}
-
 /* projects */
 .section-projects {
 	background-color: moccasin;
@@ -286,7 +295,7 @@ section {
 
 .projects-content {
 	color: maroon;
-	text-shadow: 2px 2px 3px lightgrey;
+	/text-shadow: 2px 2px 3px lightyellow;
 }
 
 .projects-content-projects {
@@ -295,7 +304,6 @@ section {
 
 .projects-content-project-details-container {
 	background-color: lightyellow;
-	height: 16em;
 }
 
 .projects-content-project-details,
@@ -317,20 +325,13 @@ section {
 .projects-content-project-name {
 	background-color: lightyellow;
 	cursor: pointer;
-	float: left;
 	margin-bottom: 1em;
-	margin-right: 4%;
 	padding: 1em;
 	text-align: center;
-	width: 48%;
 }
 
 .projects-content-project-name:hover {
 	background-color: beige;
-}
-
-.projects-content-project-name:nth-child(2n) {
-	margin-right: 0;
 }
 
 /* contact */
