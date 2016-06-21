@@ -5,15 +5,15 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 		<link rel="stylesheet" type="text/css" href="css/reset.css"/>
-		<link rel="stylesheet" type="text/css" media="(min-width:1100px)" href="css/main.css"/>
-		<link rel="stylesheet" type="text/css" media="(max-width:1099px)" href="css/mobile.css"/>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/main.css"/>
 		<script type="text/javascript" src="js/angular.min.js" defer></script>
 		<script type="text/javascript" src="js/jquery-2.1.3.min.js" defer></script>
 		<script type="text/javascript" src="js/main.js" defer></script>
 	</head>
 	
 	<body>
-		<div class="content">
+		<div class="container">
 			<section>
 				<h1 style="text-align:center">Stock Portfolio Simulation</h1>
 			</section>
@@ -106,21 +106,22 @@
 				<p>You can reset your portfolio by click the button. Be warned, this cannot be undone!<p>
 				<p><input type="button" value="Reset Portfolio" ng-click="resetPortfolio()" /></p>
 			</section>
-			<div class="modal stockDetailsModal">
-				<div class="modal-shadow"></div>
-				<div class="modal-content">
-					<h2>Details for {{stockDetails.name}} ({{stockDetails.symbol}})</h2>
-					<p>Price: {{stockDetails.price | currency}}</p>
-					<div>
-						<h3>Buy</h3>
-						<p>Available cash: {{portfolio.cash | currency}}</p>
-						<form ng-submit="buyStock()"><input type="number" ng-model="sharesToBuy" /> shares, costing {{sharesToBuy * stockDetails.price | currency}} <input type="submit" value="Buy" /></form>
-					</div>
-					<div>
-						<h3>Sell</h3>
-						<p>Shares owned: {{stockDetails.shares}}</p>
-						<form ng-submit="sellStock()"><input type="number" ng-model="sharesToSell" /> shares, worth {{sharesToSell * stockDetails.price | currency}} <input type="submit" value="Sell" /></form>
-					</div>
+		</div>
+		<div class="modal stockDetailsModal">
+			<div class="modal-shadow"></div>
+			<div class="modal-content container">
+				<div class="modal-close-button glyphicon glyphicon-remove" ng-click="closeDetails()"></div>
+				<h2>Details for {{stockDetails.name}} ({{stockDetails.symbol}})</h2>
+				<p class="modal-content-price">Price: {{stockDetails.price | currency}}</p>
+				<div class="modal-content-buy">
+					<h3>Buy</h3>
+					<p>Available cash: {{portfolio.cash | currency}}</p>
+					<form ng-submit="buyStock()"><input type="number" ng-model="sharesToBuy" /> shares, costing {{sharesToBuy * stockDetails.price | currency}} <input type="submit" value="Buy" /></form>
+				</div>
+				<div class="modal-content-sell">
+					<h3>Sell</h3>
+					<p>Shares owned: {{stockDetails.shares}}</p>
+					<form ng-submit="sellStock()"><input type="number" ng-model="sharesToSell" /> shares, worth {{sharesToSell * stockDetails.price | currency}} <input type="submit" value="Sell" /></form>
 				</div>
 			</div>
 		</div>

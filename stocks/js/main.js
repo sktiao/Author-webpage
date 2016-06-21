@@ -57,7 +57,7 @@ $(function() {
 			}
 		}
 		
-		// details
+		// open stock details modal
 		$scope.showDetails = function(symbol) {
 			$http
 			.jsonp('https://finance.yahoo.com/webservice/v1/symbols/'+symbol+'/quote?format=json&view=detail&callback=JSON_CALLBACK')
@@ -77,6 +77,10 @@ $(function() {
 					console.log('invalid symbol');
 				}
 			});
+		};
+		
+		$scope.closeDetails = function() {
+			$('.stockDetailsModal').removeClass('active');
 		};
 		
 		// buy stock

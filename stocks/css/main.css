@@ -2,13 +2,10 @@ body {
 	font-family: 'Calibri', 'Arial', sans-serif;
 }
 
-.main-hide {
-	display: none;
-}
-
-.content {
-	margin: 0 auto;
-	width: 1000px;
+@media (max-width: 767px) {
+	.mobile-hide {
+		display: none;
+	}
 }
 
 section {
@@ -17,25 +14,8 @@ section {
 	padding-bottom: 20px;
 }
 
-h1 {
-	font-size: 4em;
-	line-height: 1em;
-}
-
-h2{
-	font-size: 3em;
-	line-height: 1em;
-	margin-bottom: 0.5em;
-}
-
-h3{
-	font-size: 2em;
-	line-height: 1em;
-	margin-bottom: 0.5em;
-}
-
 p {
-	line-height: 1.5em;
+	line-height: 1.3em;
 	margin-bottom: 1em;
 }
 
@@ -112,7 +92,27 @@ tfoot td {
 
 .modal-content {
 	background-color: white;
-	margin: 20% auto;
+	margin: 10% auto;
 	padding: 20px;
-	width: 800px;
+	text-align: center;
+}
+
+.modal-close-button {
+	cursor: pointer;
+	font-size: 2em;
+	position: absolute;
+	right: 10px;
+	top: 10px;
+}
+
+.modal-content-price {
+	font-size: 1.5em;
+}
+
+.modal-content-buy,
+.modal-content-sell {
+	border: 1px solid black;
+	margin: 10px auto;
+	max-width: 400px;
+	padding-bottom: 10px;
 }
