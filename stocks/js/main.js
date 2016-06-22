@@ -2,7 +2,7 @@ $(function() {
 	$('.modal-shadow').on('click', function() {
 		$(this).parent().removeClass('active');
 	});
-	
+
 	$('.stockDetailsModal').find('input[type=number]').on('mouseup', function() {
 		$(this).select();
 	});
@@ -12,7 +12,6 @@ $(function() {
 	angular.module('stocksApp', [])
 	.controller('AppController', function($scope, $http) {
 		// load portfolio data from cookie, or create one if first time
-		// in a production app, the user would login, and user data would be fetched from a database through a server backend
 		if (document.cookie.replace(/(?:(?:^|.*;\s*)portfolio\s*\=\s*([^;]*).*$)|^.*$/, "$1") !== '') {
 			$scope.portfolio = JSON.parse(document.cookie.replace(/(?:(?:^|.*;\s*)portfolio\s*\=\s*([^;]*).*$)|^.*$/, "$1"));
 			fetchPriceData();
@@ -21,22 +20,21 @@ $(function() {
 			$scope.portfolio = JSON.parse(document.cookie.replace(/(?:(?:^|.*;\s*)portfolio\s*\=\s*([^;]*).*$)|^.*$/, "$1"));
 			fetchPriceData();
 		}
-		
+
 		// load transaction history data from cookie, or create one if first time
-		// in a production app, the user would login, and user data would be fetched from a database through a server backend
 		if (document.cookie.replace(/(?:(?:^|.*;\s*)transactionHistory\s*\=\s*([^;]*).*$)|^.*$/, "$1") !== '') {
 			$scope.transactionHistory = JSON.parse(document.cookie.replace(/(?:(?:^|.*;\s*)transactionHistory\s*\=\s*([^;]*).*$)|^.*$/, "$1"));
 		} else {
 			document.cookie = 'transactionHistory={"history":[]}';
 			$scope.transactionHistory = JSON.parse(document.cookie.replace(/(?:(?:^|.*;\s*)transactionHistory\s*\=\s*([^;]*).*$)|^.*$/, "$1"));
 		}
-		
+
 		// check with cookie if greeting message should appear
 		$scope.greeting = true;
 		if (document.cookie.replace(/(?:(?:^|.*;\s*)greeting\s*\=\s*([^;]*).*$)|^.*$/, "$1") !== '') {
 			$scope.greeting = false;
 		}
-		
+
 		function fetchPriceData() {
 			// construct query string from portfolio
 			var portfolioSymbols = '';
@@ -44,7 +42,7 @@ $(function() {
 				portfolioSymbols += $scope.portfolio.stocks[i].symbol+',';
 			}
 			$scope.portfolioValue = 0;
-			
+
 			// fetch price data from yahoo finance
 			if (portfolioSymbols.length > 0) {
 				$http
@@ -62,13 +60,13 @@ $(function() {
 				});
 			}
 		}
-		
+
 		// close greeting
 		$scope.closeGreeting = function() {
 			document.cookie = 'greeting=false';
 			$scope.greeting = false;
 		};
-		
+
 		// open stock details modal
 		$scope.showDetails = function(symbol) {
 			$http
@@ -91,12 +89,12 @@ $(function() {
 				}
 			});
 		};
-		
+
 		$scope.closeDetails = function() {
 			$('.stockDetailsModal').removeClass('active');
 			$('body').removeClass('noScroll');
 		};
-		
+
 		// buy stock
 		$scope.buyStock = function() {
 			if (parseInt($scope.sharesToBuy) === $scope.sharesToBuy && $scope.sharesToBuy > 0) {
@@ -134,7 +132,7 @@ $(function() {
 				alert('Please enter a positive integer for shares to buy.');
 			}
 		};
-		
+
 		// sell stock
 		$scope.sellStock = function() {
 			if (parseInt($scope.sharesToSell) === $scope.sharesToSell && $scope.sharesToSell > 0) {
@@ -179,9 +177,8 @@ $(function() {
 				alert('Please enter a positive integer for shares to sell.');
 			}
 		};
-		
+
 		// save portfolio to cookie
-		// in a production app, the server backend would take care of updating the database
 		function savePortfolio() {
 			var portfolio = $scope.portfolio;
 			for (var i=0; i<portfolio.stocks.length; i++) {
@@ -192,7 +189,7 @@ $(function() {
 			truncatedHistory.history = truncatedHistory.history.slice(0,20);
 			document.cookie = 'transactionHistory='+JSON.stringify(truncatedHistory)+';expires='+(new Date(Date.now()+1000*60*60*24*365).toUTCString());
 		}
-		
+
 		// search
 		$scope.searchResults = [];
 		$scope.search = function() {
@@ -211,9 +208,8 @@ $(function() {
 				}
 			});
 		};
-		
+
 		// reset portfolio by wiping the cookie
-		// in a production app, the server backend would take care of updating the database
 		$scope.resetPortfolio = function() {
 			if (confirm('You will go back to having $10,000 and zero shares. Are you sure you want to reset your portfolio?')) {
 				document.cookie = 'portfolio=; expires=Thu, 01 Jan 1970 00:00:00 GMT';
