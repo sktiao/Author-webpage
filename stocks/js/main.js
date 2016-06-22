@@ -22,15 +22,19 @@ $(function() {
 			fetchPriceData();
 		}
 		
-		$scope.noTransactions = true;
 		// load transaction history data from cookie, or create one if first time
 		// in a production app, the user would login, and user data would be fetched from a database through a server backend
 		if (document.cookie.replace(/(?:(?:^|.*;\s*)transactionHistory\s*\=\s*([^;]*).*$)|^.*$/, "$1") !== '') {
 			$scope.transactionHistory = JSON.parse(document.cookie.replace(/(?:(?:^|.*;\s*)transactionHistory\s*\=\s*([^;]*).*$)|^.*$/, "$1"));
-			$scope.noTransactions = false;
 		} else {
 			document.cookie = 'transactionHistory={"history":[]}';
 			$scope.transactionHistory = JSON.parse(document.cookie.replace(/(?:(?:^|.*;\s*)transactionHistory\s*\=\s*([^;]*).*$)|^.*$/, "$1"));
+		}
+		
+		// check with cookie if greeting message should appear
+		$scope.greeting = true;
+		if (document.cookie.replace(/(?:(?:^|.*;\s*)greeting\s*\=\s*([^;]*).*$)|^.*$/, "$1") !== '') {
+			$scope.greeting = false;
 		}
 		
 		function fetchPriceData() {
@@ -58,6 +62,12 @@ $(function() {
 				});
 			}
 		}
+		
+		// close greeting
+		$scope.closeGreeting = function() {
+			document.cookie = 'greeting=false';
+			$scope.greeting = false;
+		};
 		
 		// open stock details modal
 		$scope.showDetails = function(symbol) {
@@ -109,7 +119,7 @@ $(function() {
 							if (!stockExists) {
 								$scope.portfolio.stocks.push({symbol:$scope.stockDetails.symbol,shares:parseInt($scope.sharesToBuy),priceAvg:price});
 							}
-							$scope.transactionHistory.history.unshift({date:new Date().toISOString().slice(0,10),text:'Bought '+$scope.sharesToBuy+' share'+($scope.sharesToBuy===1?'':'s')+' of '+$scope.stockDetails.symbol+' at a price of $'+parseFloat(price).toFixed(2)+'.'});
+							$scope.transactionHistory.history.unshift({date:Date.now(),type:'Bought',shares:$scope.sharesToBuy,symbol:$scope.stockDetails.symbol,price:price});
 							savePortfolio()
 							fetchPriceData();
 							$('.stockDetailsModal').removeClass('active');
@@ -154,7 +164,7 @@ $(function() {
 							if (sharesDepleted >= 0) {
 								$scope.portfolio.stocks.splice(sharesDepleted,1);
 							}
-							$scope.transactionHistory.history.unshift({date:new Date().toISOString().slice(0,10),text:'Sold '+$scope.sharesToSell+' share'+($scope.sharesToBuy===1?'':'s')+' of '+$scope.stockDetails.symbol+' at a price of $'+parseFloat(price).toFixed(2)+'.'});
+							$scope.transactionHistory.history.unshift({date:Date.now(),type:'Sold',shares:$scope.sharesToSell,symbol:$scope.stockDetails.symbol,price:price});
 							savePortfolio()
 							fetchPriceData();
 							$('.stockDetailsModal').removeClass('active');
@@ -173,6 +183,10 @@ $(function() {
 		// save portfolio to cookie
 		// in a production app, the server backend would take care of updating the database
 		function savePortfolio() {
+			var portfolio = $scope.portfolio;
+			for (var i=0; i<portfolio.stocks.length; i++) {
+				delete portfolio.stocks[i].priceCurrent;
+			}
 			document.cookie = 'portfolio='+JSON.stringify($scope.portfolio)+';expires='+(new Date(Date.now()+1000*60*60*24*365).toUTCString());
 			var truncatedHistory = $scope.transactionHistory;
 			truncatedHistory.history = truncatedHistory.history.slice(0,20);
@@ -204,6 +218,7 @@ $(function() {
 			if (confirm('You will go back to having $10,000 and zero shares. Are you sure you want to reset your portfolio?')) {
 				document.cookie = 'portfolio=; expires=Thu, 01 Jan 1970 00:00:00 GMT';
 				document.cookie = 'transactionHistory=; expires=Thu, 01 Jan 1970 00:00:00 GMT';
+				document.cookie = 'greeting=; expires=Thu, 01 Jan 1970 00:00:00 GMT';
 				location.reload();
 			}
 		};

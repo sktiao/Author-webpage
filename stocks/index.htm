@@ -17,7 +17,8 @@
 			<section>
 				<h1 style="text-align:center">Stock Portfolio Simulation</h1>
 			</section>
-			<section ng-show="noTransactions">
+			<section class="greeting" ng-show="greeting">
+				<div class="greeting-close-button glyphicon glyphicon-remove" ng-click="closeGreeting()"></div>
 				<p>Welcome to the Stock Portfolio Simulation!</p>
 				<p>You have been granted $10,000.00 in virtual money to buy stocks with. Below you'll find your virtual portfolio, where you can keep track of your virtual stocks. Under that, you can search for stocks using their stock ticker symbols (e.g. GOOG for Google).</p>
 				<p>Clicking on a row in your portfolio or in the search results opens a dialogue window to buy and sell shares of that stock.</p>
@@ -101,8 +102,8 @@
 							<td colspan="2" style="text-align:center">Your history is empty!</td>
 						</tr>
 						<tr ng-repeat="transaction in transactionHistory.history track by $index">
-							<td>{{transaction.date}}</td>
-							<td>{{transaction.text}}</td>
+							<td>{{transaction.date | date}}</td>
+							<td>{{transaction.type}} {{transaction.shares}} share{{transaction.shares>1?'s':''}} of {{transaction.symbol}} at {{transaction.price | currency}} each.</td>
 						</tr>
 					</tbody>
 				</table>

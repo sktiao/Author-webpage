@@ -10,34 +10,27 @@
 
 body {
 	font-family: 'Calibri',
-		'Optima',
+		'Helvetica',
 		'Arial',
 		sans-serif;
 	font-size: 24px;
-	overflow: hidden;
+}
+
+@media (max-width: 767px) {
+	body {
+		font-size: 16px;
+	}
+}
+
+@media (min-width: 768px) {
+	body {
+		overflow: hidden;
+	}
 }
 
 p {
 	line-height: 1.3em;
 	margin-bottom: 1em;
-}
-
-@media (max-width: 767px) {
-	.mobile-mask {
-		background-color: lightgrey;
-		bottom: 0;
-		left: 0;
-		position: fixed;
-		right: 0;
-		top: 0;
-		z-index: 1000;
-	}
-}
-
-@media (min-width: 768px) {
-	.mobile-mask {
-		display: none;
-	}
 }
 
 .loading-mask {
@@ -80,6 +73,12 @@ p {
 	right: -40px;
 	transition: right 0.5s 0s;
 	z-index: 99;
+}
+
+@media (max-width: 767px) {
+	.sectionIndicator {
+		display: none;
+	}
 }
 
 .sectionIndicator.active,
@@ -155,6 +154,14 @@ section {
 	color: #99ccff;
 }
 
+@media (max-width: 767px) {
+	.section-top {
+		background-position: bottom;
+		background-repeat: no-repeat;
+		background-size: contain;
+	}
+}
+
 .top-content {
 	position: relative;
 	text-shadow: 2px 2px 3px black;
@@ -173,11 +180,23 @@ section {
 	white-space: nowrap;
 }
 
+@media (max-width: 767px) {
+	.top-content-name {
+		font-size: 2em;
+	}
+}
+
 .top-content-email {
 	font-size: 1.5em;
 	line-height: 1em;
 	margin-bottom: 10px;
 	white-space: nowrap;
+}
+
+@media (max-width: 767px) {
+	.top-content-email {
+		font-size: 1.3em;
+	}
 }
 
 .top-content-links {
@@ -190,17 +209,35 @@ section {
 	margin-right: 1em;
 }
 
-.top-content-links-link:hover {
-	color: aqua;
-	cursor: pointer;
+@media (min-width: 768px) {
+	.top-content-links-link:hover {
+		color: aqua;
+		cursor: pointer;
+	}
+}
+
+@media (max-width: 767px) {
+	.top-content-links-link {
+		font-size: 1.1em;
+	}
 }
 
 .top-down-arrow {
 	bottom: 1em;
+	color: #5f6eb3;
 	height: 0;
 	left: 50%;
 	position: absolute;
+	text-shadow: 0 0 3px #99ccff;
 	width: 0;
+}
+
+@media (max-width: 767px) {
+	.top-down-arrow {
+		bottom: 4em;
+		color: #99ccff;
+		text-shadow: 0 0 3px #5f6eb3;
+	}
 }
 
 .top-down-arrow > div {
@@ -209,7 +246,6 @@ section {
 	animation-iteration-count: infinite;
 	animation-name: top-down-arrow-anim;
 	animation-timing-function: ease-in-out;
-	color: #5F6EB3;
 	cursor: pointer;
 	font-size: 2em;
 	height: 1em;
@@ -229,6 +265,12 @@ section {
 	background-color: #99ccff;
 	background-image: url('../img/city-moccasin.png');
 	background-size: cover;
+}
+
+@media (max-width: 767px) {
+	.section-about {
+		background-image: none;
+	}
 }
 
 .about-sun {
@@ -289,14 +331,26 @@ section {
 	background-color: lightyellow;
 }
 
+@media (max-width: 767px) {
+	.projects-content-project-details-container {
+		background-color: unset;
+	}
+}
+
+.projects-content-default-text,
 .projects-content-project-details,
-.projects-content-default-text {
+.projects-content-project-details-mobile {
 	display: none;
 	padding: 1em;
 }
 
+.projects-content-project-details-mobile {
+	text-align: left;
+}
+
+.projects-content-default-text.active,
 .projects-content-project-details.active,
-.projects-content-default-text.active {
+.projects-content-project-details-mobile.active {
 	display: block;
 }
 
@@ -313,8 +367,10 @@ section {
 	text-align: center;
 }
 
-.projects-content-project-name:hover {
-	background-color: beige;
+@media (min-width: 768px) {
+	.projects-content-project-name:hover {
+		background-color: beige;
+	}
 }
 
 /* contact */

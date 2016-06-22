@@ -70,6 +70,18 @@ tfoot td {
 	font-weight: bold;
 }
 
+.greeting {
+	padding-top: 1em;
+	position: relative;
+}
+
+.greeting-close-button {
+	cursor: pointer;
+	position: absolute;
+	right: 10px;
+	top: 10px;
+}
+
 /* modals */
 .modal {
 	bottom: 0;
