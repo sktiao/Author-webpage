@@ -12,26 +12,28 @@ $(function() {
 	angular.module('stocksApp', [])
 	.controller('AppController', function($scope, $http) {
 		// load portfolio data from cookie, or create one if first time
-		if (document.cookie.replace(/(?:(?:^|.*;\s*)portfolio\s*\=\s*([^;]*).*$)|^.*$/, "$1") !== '') {
-			$scope.portfolio = JSON.parse(document.cookie.replace(/(?:(?:^|.*;\s*)portfolio\s*\=\s*([^;]*).*$)|^.*$/, "$1"));
+		var cookiePortfolio = document.cookie.replace(/(?:(?:^|.*;\s*)portfolio\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+		if (cookiePortfolio !== '') {
+			$scope.portfolio = JSON.parse(cookiePortfolio);
 			fetchPriceData();
 		} else {
 			document.cookie = 'portfolio={"cash":10000,"stocks":[]}';
-			$scope.portfolio = JSON.parse(document.cookie.replace(/(?:(?:^|.*;\s*)portfolio\s*\=\s*([^;]*).*$)|^.*$/, "$1"));
+			$scope.portfolio = {"cash":10000,"stocks":[]};
 			fetchPriceData();
 		}
 
 		// load transaction history data from cookie, or create one if first time
-		if (document.cookie.replace(/(?:(?:^|.*;\s*)transactionHistory\s*\=\s*([^;]*).*$)|^.*$/, "$1") !== '') {
-			$scope.transactionHistory = JSON.parse(document.cookie.replace(/(?:(?:^|.*;\s*)transactionHistory\s*\=\s*([^;]*).*$)|^.*$/, "$1"));
+			var cookieTransactionHistory = document.cookie.replace(/(?:(?:^|.*;\s*)transactionHistory\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+		if (cookieTransactionHistory !== '') {
+			$scope.transactionHistory = JSON.parse(cookieTransactionHistory);
 		} else {
 			document.cookie = 'transactionHistory={"history":[]}';
-			$scope.transactionHistory = JSON.parse(document.cookie.replace(/(?:(?:^|.*;\s*)transactionHistory\s*\=\s*([^;]*).*$)|^.*$/, "$1"));
+			$scope.transactionHistory = {"history":[]};
 		}
 
 		// check with cookie if greeting message should appear
 		$scope.greeting = true;
-		if (document.cookie.replace(/(?:(?:^|.*;\s*)greeting\s*\=\s*([^;]*).*$)|^.*$/, "$1") !== '') {
+		if (document.cookie.replace(/(?:(?:^|.*;\s*)greeting\s*\=\s*([^;]*).*$)|^.*$/, "$1")) {
 			$scope.greeting = false;
 		}
 
