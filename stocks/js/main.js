@@ -120,7 +120,7 @@ $(function() {
 							$scope.transactionHistory.history.unshift({date:Date.now(),type:'Bought',shares:$scope.sharesToBuy,symbol:$scope.stockDetails.symbol,price:price});
 							savePortfolio()
 							fetchPriceData();
-							$('.stockDetailsModal').removeClass('active');
+							$scope.closeDetails();
 						} else {
 							alert('You do not have enough cash to buy that many shares!');
 						}
@@ -165,7 +165,7 @@ $(function() {
 							$scope.transactionHistory.history.unshift({date:Date.now(),type:'Sold',shares:$scope.sharesToSell,symbol:$scope.stockDetails.symbol,price:price});
 							savePortfolio()
 							fetchPriceData();
-							$('.stockDetailsModal').removeClass('active');
+							$scope.closeDetails();
 						} else {
 							alert('You do not have that many shares to sell!');
 						}
