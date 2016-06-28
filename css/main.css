@@ -35,29 +35,60 @@ p {
 	position: relative;
 	text-align: center;
 	top: 40%;
-	top: calc(45% - 85px);
+	top: calc(48% - 180px);
 }
 
 .section-top-content-name {
 	font-family: 'Lobster', cursive;
 	font-size: 8em;
+	line-height: 1.5em;
 }
 
 .section-top-content-greeting {
-	font-size: 1.5em;
 	margin: 0 auto;
 	width: 80%;
 }
 
+@media (min-width: 768px) {
+	.section-top-content-greeting {
+		font-size: 1.5em;
+	}
+}
+
 .section-top-arrow {
-	bottom: 0;
+	bottom: 40px;
+	cursor: pointer;
+	height: 0;
 	font-size: 2em;
 	left: 50%;
 	position: absolute;
+	width: 0;
+}
+
+@media (max-width: 767px) {
+	.section-top-arrow {
+		bottom: 100px;
+	}
 }
 
 .section-top-arrow .glyphicon {
-	margin-left: -50%;
+	animation-name: top-arrow;
+	animation-duration: 1s;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+	left: -0.5em;
+	position: absolute;
+	top: -0.5em;
+}
+
+@keyframes top-arrow {
+	from {
+		top: -0.5em;
+	}
+	to {
+		top: -1em;
+	}
 }
 
 #section-about {
@@ -74,14 +105,14 @@ p {
 }
 
 #section-projects {
-	padding: 50px 0;
+	padding: 80px 0;
 	text-align: center;
 }
 
 #section-contact {
 	background-color: #366;
 	color: white;
-	padding: 50px 0;
+	padding: 80px 0;
 	text-align: center;
 }
 
@@ -90,8 +121,8 @@ p {
 }
 
 #section-footer {
-	background-color: black;
+	background-color: #222;
 	color: white;
-	padding: 15px 0;
+	padding: 30px 0 20px;
 	text-align: center;
 }
