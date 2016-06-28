@@ -114,7 +114,7 @@ section {
 
 .section-projects-tile {
 	position: relative;
-	margin-bottom: 30px;
+	margin: 15px 0;
 }
 
 .section-projects-tile-image {
@@ -138,6 +138,21 @@ section {
 .section-projects-tile:hover .section-projects-tile-overlay,
 .section-projects-tile.active .section-projects-tile-overlay {
 	opacity: 1;
+}
+
+.mobile-tile-separator {
+	border-top: 1px solid #222;
+	display: none;
+	float: left;
+	height: 0;
+	margin: 0 10%;
+	width: 80%;
+}
+
+@media (max-width: 767px) {
+	.mobile-tile-separator {
+		display: block;
+	}
 }
 
 #section-contact {
