@@ -1,19 +1,45 @@
 body {
-	font-family: 'Calibri', 'Helvetica', 'Arial', sans-serif;
+	font-family: 'Open Sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+	font-size: 1.5rem;
 }
 
-#section-top-nav {
-	margin-top: 20px;
-}
-
-#section-top-background {
-	background-image: url('../img/bg-top.png');
+#section-top {
+	//background-image: url('../img/bg-top-1.png');
+	background-image: url('../img/bg-top-2.jpg');
 	background-position: center center;
 	background-size: cover;
-	height: 500px;
+	color: white;
+	height: 30em;
+	height: calc(100vh - 50px);
+	margin-top: 50px;
+	text-shadow: 2px 2px 3px black;
 }
 
-#section-footer {
-	background-color: #222;
-	border-top: 1px solid #080808;
+.section-top-content {
+	position: relative;
+	text-align: center;
+	top: 40%;
+	top: calc(45% - 85px);
+}
+
+.section-top-content-name {
+	font-family: 'Century Gothic', sans-serif;
+	font-size: 3em;
+}
+
+.section-top-content-greeting {
+	font-size: 1.5em;
+	margin: 0 auto;
+	width: 44%;
+}
+
+.section-top-arrow {
+	bottom: 0;
+	font-size: 2em;
+	left: 50%;
+	position: absolute;
+}
+
+#section-about {
+	background-color: turquoise;
 }
