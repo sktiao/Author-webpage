@@ -19,6 +19,10 @@ p {
 	text-align: justify;
 }
 
+section {
+	text-align: center;
+}
+
 #section-top {
 	background-image: url('../img/elle_tolman.png');
 	background-position: center center;
@@ -33,7 +37,6 @@ p {
 
 .section-top-content {
 	position: relative;
-	text-align: center;
 	top: 40%;
 	top: calc(48% - 180px);
 }
@@ -101,14 +104,12 @@ p {
 	background-color: #365;
 	color: ivory;
 	padding: 80px 0;
-	text-align: center;
 }
 
 #section-projects {
 	background-color: ivory;
 	color: black;
 	padding: 80px 0;
-	text-align: center;
 }
 
 .section-projects-tile {
@@ -134,7 +135,8 @@ p {
 	top: 0;
 }
 
-.section-projects-tile:hover .section-projects-tile-overlay {
+.section-projects-tile:hover .section-projects-tile-overlay,
+.section-projects-tile.active .section-projects-tile-overlay {
 	opacity: 1;
 }
 
@@ -142,7 +144,6 @@ p {
 	background-color: #366;
 	color: white;
 	padding: 80px 0;
-	text-align: center;
 }
 
 #section-contact a {
@@ -153,5 +154,4 @@ p {
 	background-color: #222;
 	color: white;
 	padding: 30px 0 20px;
-	text-align: center;
 }

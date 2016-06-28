@@ -9,4 +9,8 @@
 		$('html,body').stop().animate({scrollTop:$('#section-about').offset().top-50}, 500);
 		$('.navbar-collapse').removeClass('in');
 	});
+	
+	$('.section-projects-tile').on('touchend', function() {
+		$(this).toggleClass('active');
+	});
 })();
