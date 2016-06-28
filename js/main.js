@@ -1,10 +1,7 @@
-var bgArray = ['bg-top-1.png','bg-top-2.jpg'];
-var bgIndex = 0;
-//window.setInterval(rotateTopBg, 3000);
-
-function rotateTopBg() {
-	$('#section-top').css({'background-image':'url(\'../img/'+bgArray[bgIndex++]+'\')'});
-	if (bgIndex >= bgArray.length) {
-		bgIndex = 0;
-	}
-}
+(function() {
+	$('.navbar-link').add('.navbar-brand').on('click', function(e) {
+		e.preventDefault();
+		$('html,body').stop().animate({scrollTop:$($(this).attr('href')).offset().top-50}, 500);
+		$('.navbar-collapse').removeClass('in');
+	});
+})();

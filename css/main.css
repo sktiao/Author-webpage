@@ -3,15 +3,31 @@ body {
 	font-size: 1.5rem;
 }
 
+h1, h2, h3 {
+	font-family: 'Cutive Mono', monospace;
+}
+
+h1 {
+	font-size: 3em;
+}
+
+h2 {
+	text-decoration: underline;
+}
+
+p {
+	text-align: justify;
+}
+
 #section-top {
-	//background-image: url('../img/bg-top-1.png');
-	background-image: url('../img/bg-top-2.jpg');
+	background-image: url('../img/bg-top-1.png');
 	background-position: center center;
 	background-size: cover;
 	color: white;
 	height: 30em;
 	height: calc(100vh - 50px);
 	margin-top: 50px;
+	position: relative;
 	text-shadow: 2px 2px 3px black;
 }
 
@@ -23,14 +39,14 @@ body {
 }
 
 .section-top-content-name {
-	font-family: 'Century Gothic', sans-serif;
-	font-size: 3em;
+	font-family: 'Lobster', cursive;
+	font-size: 8em;
 }
 
 .section-top-content-greeting {
 	font-size: 1.5em;
 	margin: 0 auto;
-	width: 44%;
+	width: 80%;
 }
 
 .section-top-arrow {
@@ -40,6 +56,42 @@ body {
 	position: absolute;
 }
 
+.section-top-arrow .glyphicon {
+	margin-left: -50%;
+}
+
 #section-about {
-	background-color: navy;
+	background-color: #234;
+	color: white;
+	padding: 80px 0;
+}
+
+#section-tools {
+	background-color: #365;
+	color: white;
+	padding: 80px 0;
+	text-align: center;
+}
+
+#section-projects {
+	padding: 50px 0;
+	text-align: center;
+}
+
+#section-contact {
+	background-color: #366;
+	color: white;
+	padding: 50px 0;
+	text-align: center;
+}
+
+#section-contact a {
+	color: lightblue;
+}
+
+#section-footer {
+	background-color: black;
+	color: white;
+	padding: 15px 0;
+	text-align: center;
 }
