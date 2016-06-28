@@ -135,7 +135,12 @@ section {
 	top: 0;
 }
 
-.section-projects-tile:hover .section-projects-tile-overlay,
+@media (min-width: 768px) {
+	.section-projects-tile:hover .section-projects-tile-overlay {
+		opacity: 1;
+	}
+}
+
 .section-projects-tile.active .section-projects-tile-overlay {
 	opacity: 1;
 }
