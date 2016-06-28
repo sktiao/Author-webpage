@@ -145,6 +145,10 @@ section {
 	opacity: 1;
 }
 
+.section-projects-tile-overlay a {
+	color: lightblue;
+}
+
 .mobile-tile-separator {
 	border-top: 1px solid #222;
 	display: none;
