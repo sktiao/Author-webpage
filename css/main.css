@@ -105,6 +105,23 @@ section {
 	font-style: normal;
 }
 
+.section-about-image-container {
+	border-radius: 50%;
+	clear: both;
+	height: 10em;
+	margin: 20px auto 30px;
+	overflow: hidden;
+	width: 10em;
+}
+
+.section-about-image {
+	height: 110%;
+	left: -5%;
+	position: relative;
+	top: -5%;
+	width: 110%;
+}
+
 #section-tools {
 	background-color: #365;
 	color: ivory;
