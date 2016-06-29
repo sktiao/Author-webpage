@@ -1,10 +1,20 @@
+/* fixing bootstrap styles*/
+.navbar {
+	border-color: transparent;
+}
+
+.navbar-brand {
+	font-size: 1em;
+}
+
+/* actual styles */
 body {
-	font-family: 'Open Sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+	font-family: 'Open Sans', 'Helvetica Neue', 'Arial', sans-serif;
 	font-size: 1.5rem;
 }
 
 h1, h2, h3 {
-	font-family: 'Cutive Mono', monospace;
+	font-family: 'Cutive Mono', 'Courier New', 'Century Gothic', monospace;
 }
 
 h1 {
@@ -23,6 +33,10 @@ section {
 	text-align: center;
 }
 
+.center {
+	text-align: center;
+}
+
 #section-top {
 	background-image: url('../img/elle_tolman.png');
 	background-position: center center;
@@ -38,13 +52,14 @@ section {
 .section-top-content {
 	position: relative;
 	top: 40%;
-	top: calc(48% - 180px);
+	top: calc(48% - 146px);
 }
 
 .section-top-content-name {
-	font-family: 'Lobster', cursive;
+	font-family: 'Lobster', 'Courier', 'Courier New', monospace;
 	font-size: 8em;
-	line-height: 1.5em;
+	line-height: 1em;
+	margin-bottom: 24px;
 }
 
 .section-top-content-greeting {
