@@ -155,6 +155,7 @@ section {
 }
 
 .section-projects-tile-image {
+	height: auto;
 	width: 100%;
 }
 
