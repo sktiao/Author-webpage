@@ -160,31 +160,21 @@ section {
 }
 
 .section-projects-tile-overlay {
-	background-color: rgba(0,0,0,0.8);
+	background-color: rgba(0,0,0,0.9);
 	bottom: 0;
 	color: ivory;
 	left: 0;
-	opacity: 0;
 	padding: 0 20px;
 	position: absolute;
 	right: 0;
 	text-shadow: 1px 1px 1px black;
-	transition: opacity 0.3s 0s;
+	transition: background-color 0.3s 0s;
 	top: 0;
-}
-
-@media (min-width: 768px) {
-	.section-projects-tile:hover .section-projects-tile-overlay {
-		opacity: 1;
-	}
-}
-
-.section-projects-tile.active .section-projects-tile-overlay {
-	opacity: 1;
 }
 
 .section-projects-tile-overlay a {
 	color: lightblue;
+	font-size: 1.2em;
 }
 
 .mobile-tile-separator {
