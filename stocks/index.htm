@@ -118,17 +118,17 @@
 			<div class="modal-shadow"></div>
 			<div class="modal-content container">
 				<div class="modal-close-button glyphicon glyphicon-remove" ng-click="closeDetails()"></div>
-				<h2>Details for {{stockDetails.name}} ({{stockDetails.symbol}})</h2>
-				<p class="modal-content-price">Price: {{stockDetails.price | currency}}</p>
+				<h2>Details for {{stockDetails.Name}} ({{stockDetails.Symbol}})</h2>
+				<p class="modal-content-price">Price: {{stockDetails.LastTradePriceOnly | currency}}</p>
 				<div class="modal-content-buy">
 					<h3>Buy</h3>
 					<p>Available cash: {{portfolio.cash | currency}}</p>
-					<form ng-submit="buyStock()"><input type="number" ng-model="sharesToBuy" /> shares, costing {{sharesToBuy * stockDetails.price | currency}} <input type="submit" value="Buy" /></form>
+					<form ng-submit="buyStock()"><input type="number" ng-model="sharesToBuy" /> shares, costing {{sharesToBuy * stockDetails.LastTradePriceOnly | currency}} <input type="submit" value="Buy" /></form>
 				</div>
 				<div class="modal-content-sell">
 					<h3>Sell</h3>
 					<p>Shares owned: {{stockDetails.shares}}</p>
-					<form ng-submit="sellStock()"><input type="number" ng-model="sharesToSell" /> shares, worth {{sharesToSell * stockDetails.price | currency}} <input type="submit" value="Sell" /></form>
+					<form ng-submit="sellStock()"><input type="number" ng-model="sharesToSell" /> shares, worth {{sharesToSell * stockDetails.LastTradePriceOnly | currency}} <input type="submit" value="Sell" /></form>
 				</div>
 			</div>
 		</div>

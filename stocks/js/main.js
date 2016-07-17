@@ -48,13 +48,16 @@ $(function() {
 			// fetch price data from yahoo finance
 			if (portfolioSymbols.length > 0) {
 				$http
-				.jsonp('https://finance.yahoo.com/webservice/v1/symbols/'+portfolioSymbols+'/quote?format=json&view=detail&callback=JSON_CALLBACK')
+				.get('https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22'+portfolioSymbols+'%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys')
 				.then(function(res) {
-					var arr = res.data.list.resources;
+					var arr = res.data.query.results.quote;
+					if (arr.constructor === Object) {
+						arr = [arr];
+					}
 					if (arr.length === $scope.portfolio.stocks.length) {
 						for (var i=0; i<arr.length; i++) {
-							$scope.portfolio.stocks[i].priceCurrent = arr[i].resource.fields.price;
-							$scope.portfolioValue += parseFloat(arr[i].resource.fields.price)*$scope.portfolio.stocks[i].shares;
+							$scope.portfolio.stocks[i].priceCurrent = arr[i].LastTradePriceOnly;
+							$scope.portfolioValue += parseFloat(arr[i].LastTradePriceOnly)*$scope.portfolio.stocks[i].shares;
 						}
 					} else {
 						console.log('invalid portfolio');
@@ -72,10 +75,14 @@ $(function() {
 		// open stock details modal
 		$scope.showDetails = function(symbol) {
 			$http
-			.jsonp('https://finance.yahoo.com/webservice/v1/symbols/'+symbol+'/quote?format=json&view=detail&callback=JSON_CALLBACK')
+			.get('https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22'+symbol+'%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys')
 			.then(function(res) {
-				if (res.data.list.resources.length === 1) {
-					$scope.stockDetails = res.data.list.resources[0].resource.fields;
+				var arr = res.data.query.results.quote;
+				if (arr.constructor === Object) {
+					arr = [arr];
+				}
+				if (arr.length === 1) {
+					$scope.stockDetails = arr[0];
 					$scope.stockDetails.shares = 0;
 					for (var i=0; i<$scope.portfolio.stocks.length; i++) {
 						if ($scope.portfolio.stocks[i].symbol === symbol) {
@@ -101,10 +108,14 @@ $(function() {
 		$scope.buyStock = function() {
 			if (parseInt($scope.sharesToBuy) === $scope.sharesToBuy && $scope.sharesToBuy > 0) {
 				$http
-				.jsonp('https://finance.yahoo.com/webservice/v1/symbols/'+$scope.stockDetails.symbol+'/quote?format=json&view=detail&callback=JSON_CALLBACK')
+				.get('https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22'+$scope.stockDetails.symbol+'%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys')
 				.then(function(res) {
-					if (res.data.list.resources.length === 1) {
-						var price = res.data.list.resources[0].resource.fields.price;
+					var arr = res.data.query.results.quote;
+					if (arr.constructor === Object) {
+						arr = [arr];
+					}
+					if (arr.length === 1) {
+						var price = arr[0].LastTradePriceOnly;
 						var totalPrice = $scope.sharesToBuy*price;
 						if ($scope.portfolio.cash >= totalPrice) {
 							$scope.portfolio.cash -= totalPrice;
@@ -139,10 +150,14 @@ $(function() {
 		$scope.sellStock = function() {
 			if (parseInt($scope.sharesToSell) === $scope.sharesToSell && $scope.sharesToSell > 0) {
 				$http
-				.jsonp('https://finance.yahoo.com/webservice/v1/symbols/'+$scope.stockDetails.symbol+'/quote?format=json&view=detail&callback=JSON_CALLBACK')
+				.get('https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22'+$scope.stockDetails.symbol+'%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys')
 				.then(function(res) {
-					if (res.data.list.resources.length === 1) {
-						var price = res.data.list.resources[0].resource.fields.price;
+					var arr = res.data.query.results.quote;
+					if (arr.constructor === Object) {
+						arr = [arr];
+					}
+					if (arr.length === 1) {
+						var price = arr[0].LastTradePriceOnly;
 						var totalPrice = $scope.sharesToBuy*price;
 						var sharesOwned = 0;
 						for (var i=0; i<$scope.portfolio.stocks.length; i++) {
@@ -196,13 +211,17 @@ $(function() {
 		$scope.searchResults = [];
 		$scope.search = function() {
 			$http
-			.jsonp('https://finance.yahoo.com/webservice/v1/symbols/'+$scope.searchSymbol+'/quote?format=json&view=detail&callback=JSON_CALLBACK')
+			.get('https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22'+$scope.searchSymbol+'%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys')
 			.then(function(res) {
-				var arr = res.data.list.resources;
+				console.log(res);
+				var arr = res.data.query.results.quote;
+				if (arr.constructor === Object) {
+					arr = [arr];
+				}
 				if (arr.length > 0) {
 					$scope.searchError = '';
 					for (var i=0; i<arr.length; i++) {
-						$scope.searchResults.unshift({symbol:arr[i].resource.fields.symbol,name:arr[i].resource.fields.name,price:arr[i].resource.fields.price});
+						$scope.searchResults.unshift({symbol:arr[i].Symbol,name:arr[i].Name,price:arr[i].LastTradePriceOnly});
 					}
 					$scope.searchSymbol = '';
 				} else {
