@@ -7,6 +7,10 @@
 	font-size: 1em;
 }
 
+.navbar-nav > li >  a:focus {
+	color: #9d9d9d !important;
+}
+
 /* actual styles */
 body {
 	font-family: 'Open Sans', 'Helvetica Neue', 'Arial', sans-serif;
@@ -14,7 +18,7 @@ body {
 }
 
 h1, h2, h3 {
-	font-family: 'Cutive Mono', 'Courier New', 'Century Gothic', monospace;
+	font-family: 'Open Sans', 'Helvetica Neue', 'Arial', sans-serif;
 }
 
 h1 {
@@ -38,7 +42,8 @@ section {
 }
 
 #section-top {
-	background-image: url('../img/top-bg.png');
+	/*background-image: url('../img/top-bg.png');*/
+	background-image: url('../img/alps.jpg');
 	background-position: center center;
 	background-size: cover;
 	color: ivory;
@@ -56,8 +61,8 @@ section {
 }
 
 .section-top-content-name {
-	font-family: 'Lobster', 'Courier', 'Courier New', monospace;
-	font-size: 8em;
+	font-family: 'Unica One', 'Helvetica Neue', 'Arial', sans-serif;
+	font-size: 10em;
 	line-height: 1em;
 	margin-bottom: 24px;
 }
@@ -138,8 +143,16 @@ section {
 }
 
 #section-tools {
-	background-color: #365;
+	background-image: url('../img/gear.jpg');
+	background-position: center center;
+	background-size: cover;
 	color: ivory;
+	text-shadow: 2px 2px 3px black;
+}
+
+.section-tools-background-mask {
+	background-color: #365;
+	background-color: rgba(0,0,0,0.5);
 	padding: 80px 0;
 }
 
@@ -160,15 +173,14 @@ section {
 }
 
 .section-projects-tile-overlay {
-	background-color: rgba(0,0,0,0.9);
+	background-color: rgba(0,0,0,0.8);
 	bottom: 0;
 	color: ivory;
 	left: 0;
 	padding: 0 20px;
 	position: absolute;
 	right: 0;
-	text-shadow: 1px 1px 1px black;
-	transition: background-color 0.3s 0s;
+	text-shadow: 2px 2px 2px black;
 	top: 0;
 }
 
