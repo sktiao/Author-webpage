@@ -1,220 +1,221 @@
 /* fixing bootstrap styles*/
 .navbar {
-	border-color: transparent;
+  border-color: transparent;
 }
 
 .navbar-brand {
-	font-size: 1em;
+  font-size: 1em;
 }
 
 .navbar-nav > li >  a:focus {
-	color: #9d9d9d !important;
+  color: #9d9d9d !important;
 }
 
 /* actual styles */
 body {
-	font-family: 'Open Sans', 'Helvetica Neue', 'Arial', sans-serif;
-	font-size: 1.5rem;
-}
-
-h1, h2, h3 {
-	font-family: 'Open Sans', 'Helvetica Neue', 'Arial', sans-serif;
+  font-family: 'Open Sans', 'Helvetica Neue', 'Arial', sans-serif;
+  font-size: 16px;
 }
 
 h1 {
-	font-size: 3em;
+  font-size: 3em;
 }
 
 h2 {
-	text-decoration: underline;
+  text-decoration: underline;
 }
 
 p {
-	text-align: justify;
+  text-align: justify;
 }
 
 section {
-	text-align: center;
+  text-align: center;
 }
 
 .center {
-	text-align: center;
+  text-align: center;
 }
 
 #section-top {
-	background-image: url('../img/alps.jpg');
-	background-position: center center;
-	background-size: cover;
-	color: ivory;
-	height: 30em;
-	height: calc(100vh - 50px);
-	margin-top: 50px;
-	position: relative;
-	text-shadow: 2px 2px 3px black;
+  background-image: url('../img/alps.jpg');
+  background-position: center center;
+  background-size: cover;
+  color: ivory;
+  height: 30em;
+  height: calc(100vh - 50px);
+  margin-top: 50px;
+  position: relative;
+  text-shadow: 2px 2px 3px black;
 }
 
 .section-top-content {
-	position: relative;
-	top: 40%;
-	top: calc(48% - 146px);
+  position: relative;
+  top: 40%;
+  top: calc(50% - 20rem);
+}
+
+.section-top-content-initials {
+  font-family: 'Unica One', 'Helvetica Neue', 'Arial', sans-serif;
+  font-size: 10em;
+  line-height: 0.8em;
 }
 
 .section-top-content-name {
-	font-family: 'Unica One', 'Helvetica Neue', 'Arial', sans-serif;
-	font-size: 10em;
-	line-height: 1em;
-	margin-bottom: 24px;
+  margin: 0 auto 24px;
+  width: 80%;
 }
 
 .section-top-content-greeting {
-	margin: 0 auto;
-	width: 80%;
+  margin: 0 auto;
+  width: 80%;
 }
 
 @media (min-width: 768px) {
-	.section-top-content-greeting {
-		font-size: 1.5em;
-	}
+  .section-top-content-greeting {
+    font-size: 1.5em;
+  }
 }
 
 .section-top-arrow {
-	bottom: 40px;
-	cursor: pointer;
-	height: 0;
-	font-size: 2em;
-	left: 50%;
-	position: absolute;
-	width: 0;
+  bottom: 40px;
+  cursor: pointer;
+  height: 0;
+  font-size: 2em;
+  left: 50%;
+  position: absolute;
+  width: 0;
 }
 
 @media (max-width: 767px) {
-	.section-top-arrow {
-		bottom: 100px;
-	}
+  .section-top-arrow {
+    bottom: 100px;
+  }
 }
 
 .section-top-arrow .glyphicon {
-	animation-name: top-arrow;
-	animation-duration: 1s;
-	animation-timing-function: ease-in-out;
-	animation-iteration-count: infinite;
-	animation-direction: alternate;
-	left: -0.5em;
-	position: absolute;
-	top: -0.5em;
+  animation-name: top-arrow;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  left: -0.5em;
+  position: absolute;
+  top: -0.5em;
 }
 
 @keyframes top-arrow {
-	from {
-		top: -0.5em;
-	}
-	to {
-		top: -1em;
-	}
+  from {
+    top: -0.5em;
+  }
+  to {
+    top: -1em;
+  }
 }
 
 #section-about {
-	background-color: #234;
-	color: ivory;
-	padding: 80px 0;
+  background-color: #234;
+  color: ivory;
+  padding: 80px 0;
 }
 
 #section-about em {
-	color: lemonchiffon;
-	font-style: normal;
+  color: lemonchiffon;
+  font-style: normal;
 }
 
 .section-about-image-container {
-	border-radius: 50%;
-	clear: both;
-	height: 10em;
-	margin: 20px auto 30px;
-	overflow: hidden;
-	width: 10em;
+  border-radius: 50%;
+  clear: both;
+  height: 10em;
+  margin: 20px auto 30px;
+  overflow: hidden;
+  width: 10em;
 }
 
 .section-about-image {
-	height: 110%;
-	left: -5%;
-	position: relative;
-	top: -5%;
-	width: 110%;
+  height: 110%;
+  left: -5%;
+  position: relative;
+  top: -5%;
+  width: 110%;
 }
 
 #section-tools {
-	background-image: url('../img/gear.jpg');
-	background-position: center center;
-	background-size: cover;
-	color: ivory;
-	text-shadow: 2px 2px 3px black;
+  background-image: url('../img/gear.jpg');
+  background-position: center center;
+  background-size: cover;
+  color: ivory;
+  text-shadow: 2px 2px 3px black;
 }
 
 .section-tools-background-mask {
-	background-color: #365;
-	background-color: rgba(0,0,0,0.5);
-	padding: 80px 0;
+  background-color: #365;
+  background-color: rgba(0,0,0,0.5);
+  padding: 80px 0;
 }
 
 #section-projects {
-	background-color: ivory;
-	color: black;
-	padding: 80px 0;
+  background-color: ivory;
+  color: black;
+  padding: 80px 0;
 }
 
 .section-projects-tile {
-	position: relative;
-	margin: 15px 0;
+  position: relative;
+  margin: 15px 0;
+  font-size: 1.5rem;
 }
 
 .section-projects-tile-image {
-	height: auto;
-	width: 100%;
+  height: auto;
+  width: 100%;
 }
 
 .section-projects-tile-overlay {
-	background-color: rgba(0,0,0,0.8);
-	bottom: 0;
-	color: ivory;
-	left: 0;
-	padding: 0 20px;
-	position: absolute;
-	right: 0;
-	text-shadow: 2px 2px 2px black;
-	top: 0;
+  background-color: rgba(0,0,0,0.8);
+  bottom: 0;
+  color: ivory;
+  left: 0;
+  padding: 0 20px;
+  position: absolute;
+  right: 0;
+  text-shadow: 2px 2px 2px black;
+  top: 0;
 }
 
 .section-projects-tile-overlay a {
-	color: lightblue;
-	font-size: 1.2em;
+  color: lightblue;
+  font-size: 1.2em;
 }
 
 .mobile-tile-separator {
-	border-top: 1px solid #222;
-	display: none;
-	float: left;
-	height: 0;
-	margin: 0 10%;
-	width: 80%;
+  border-top: 1px solid #222;
+  display: none;
+  float: left;
+  height: 0;
+  margin: 1rem 10%;
+  width: 80%;
 }
 
 @media (max-width: 767px) {
-	.mobile-tile-separator {
-		display: block;
-	}
+  .mobile-tile-separator {
+    display: block;
+  }
 }
 
 #section-contact {
-	background-color: #366;
-	color: ivory;
-	padding: 80px 0;
+  background-color: #366;
+  color: ivory;
+  padding: 80px 0;
 }
 
 #section-contact a {
-	color: lightblue;
+  color: lightblue;
 }
 
 #section-footer {
-	background-color: #222;
-	color: #9d9d9d;
-	padding: 30px 0 20px;
+  background-color: #222;
+  color: #9d9d9d;
+  padding: 30px 0 20px;
 }
