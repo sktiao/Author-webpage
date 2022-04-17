@@ -209,13 +209,13 @@ section {
 }
 
 #section-contact {
-  background-color: #366;
+  background-color: #3a3c1c;
   color: ivory;
   padding: 80px 0;
 }
 
 #section-contact a {
-  color: #3a3c1c;
+  color: lightblue;
 }
 
 #section-footer {
