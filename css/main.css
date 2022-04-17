@@ -29,6 +29,10 @@ h3 {
   text-decoration: underline;
 }
 
+p {
+  text-align: left;
+}
+
 section {
   text-align: center;
 }
