@@ -125,8 +125,7 @@ section {
 }
 
 #section-about em {
-  color: lemonchiffon;
-  font-style: normal;
+  font-style: italic;
 }
 
 .section-about-image-container {
